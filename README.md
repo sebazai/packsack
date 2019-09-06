@@ -1,6 +1,6 @@
 # packsack
 
-Pakkausohjelma, joka toteutetaan Javalla käyttäen Huffmanin algoritmia.
+Pakkausohjelma, joka toteutetaan Javalla käyttäen Huffmanin algoritmia. Tietorakenteet ja algoritmit aineharjoitustyö.
 
 ###  Dokumentaatio
 
