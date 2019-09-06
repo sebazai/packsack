@@ -2,6 +2,8 @@
 
 Projektin tarkoitus on totetuttaa javalla ohjelma, joka käyttää Huffmanin algoritmia, pakkaamaan ja purkamaan tiedostoja. Tavoitteena olisi saada tiedostot pienentymään 30-70% alkuperäisestä koostaan ja purettua ilman että tiedosto muuttuisi.
 
+Dokumenttia täydennetään kun lisää ymmärrystä aiheesta on.
+
 ### Käytettävät tietorakenteet ja algoritmit
 
 Huffmanin koodi ja tähän tarvittavat tietorakenteet, kuten minimikeko ja puu, jota tarvitaan koodausta varten. Joku bitti/tavu ratkaisu, joka on vielä hieman epäselvä. 
@@ -24,3 +26,4 @@ Tilavaativuus tulee olemaan O(N), missä N on tiedoston koko.
 #### Huffman
 
 * [ECE264: Huffman Coding - Purdue University](https://engineering.purdue.edu/ece264/17au/hw/HW13?alt=huffman)
+* [Introduction to Data Compression](http://www.cs.cmu.edu/afs/cs/project/pscico-guyb/realworld/www/compression.pdf)
