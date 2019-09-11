@@ -12,12 +12,12 @@ package util;
 public class HuffNode implements Comparable<HuffNode> {
     private int occurrence;
     private HuffNode leftChild, rightChild;
-    private Byte nodeByte;
+    private char character;
     private Boolean isLeaf;
     
-    public HuffNode(Byte byteNode, int byteOccurrence, HuffNode left, HuffNode right) {
-        this.nodeByte = byteNode;
-        this.occurrence = byteOccurrence;
+    public HuffNode(char character, int charOccurrence, HuffNode left, HuffNode right) {
+        this.character = character;
+        this.occurrence = charOccurrence;
         if (left == null && right == null) {
             isLeaf = true;
         } else {
