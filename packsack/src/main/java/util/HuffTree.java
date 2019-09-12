@@ -5,10 +5,34 @@
  */
 package util;
 
+import java.util.PriorityQueue;
+
 /**
  *
  * @author sebserge
  */
 public class HuffTree {
+    private HuffNode root;
+    
+    public void buildHuffTree(int[] occurrence) {
+        PriorityQueue<HuffNode> huffTree = new PriorityQueue<>();
+        for (char i = 0; i < 256; i++) {
+            // Convert unsigned int to signed'
+            if (occurrence[i] != 0) { 
+                huffTree.add(new HuffNode((char) (byte) i, occurrence[i], null, null));
+            }
+        }
+        while (huffTree.size() > 1) {
+            HuffNode leftNode = huffTree.poll();
+            HuffNode rightNode = huffTree.poll();
+            HuffNode parentNode = new HuffNode(leftNode.getOccurrence() + rightNode.getOccurrence(), leftNode, rightNode);
+            huffTree.add(parentNode);
+        }
+        this.root = huffTree.poll();
+    }
+    
+    public HuffNode getRoot() {
+        return this.root;
+    }
     
 }

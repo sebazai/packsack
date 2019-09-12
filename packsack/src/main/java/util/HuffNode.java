@@ -27,6 +27,33 @@ public class HuffNode implements Comparable<HuffNode> {
         }
     }
     
+    public HuffNode(int charOccurrence, HuffNode left, HuffNode right) {
+        this.occurrence = charOccurrence;
+        this.isLeaf = false;
+        this.leftChild = left;
+        this.rightChild = right;
+    }
+    
+    public boolean getLeaf() {
+        return isLeaf;
+    }
+    
+    public char getCharacter() {
+        return this.character;
+    }
+    
+    public int getOccurrence() {
+        return this.occurrence;
+    }
+    
+    public HuffNode getLeftNode() {
+        return this.leftChild;
+    }
+    
+    public HuffNode getRightNode() {
+        return this.rightChild;
+    }
+    
     public int compareTo(HuffNode t) {
         return this.occurrence - t.occurrence;
     }
