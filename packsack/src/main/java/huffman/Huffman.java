@@ -15,13 +15,13 @@ import util.HuffTree;
  */
 public class Huffman {
     private HuffTree tree;
-    FileInput stream;
+
     public Huffman() {
         this.tree = new HuffTree();
     }
     
-    public void compress(String filePath) throws FileNotFoundException, IOException {
-        stream = new FileInput(filePath);
+    public void compress(String filePath) {
+        FileInput stream = new FileInput(filePath);
         int[] occurrences = new int[256];
 
         int nextInt;

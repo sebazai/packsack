@@ -7,6 +7,8 @@ package io;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -15,7 +17,7 @@ import java.io.IOException;
 public class FileInput {
     FileInputStream stream;
     String path;
-    public FileInput(String pathToFile) throws FileNotFoundException {
+    public FileInput(String pathToFile) {
         try {
             this.path = pathToFile;
             this.stream = new FileInputStream(this.path);
@@ -24,11 +26,20 @@ public class FileInput {
         }
     }
     
-    public int nextInt() throws IOException {
-        return stream.read();
+    public int nextInt() {
+        try {
+            return stream.read();
+        } catch (IOException ex) {
+            Logger.getLogger(FileInput.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -500;
     }
     
-    public void close() throws IOException {
-        stream.close();
+    public void close() {
+        try {
+            stream.close();
+        } catch (IOException ex) {
+            Logger.getLogger(FileInput.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
