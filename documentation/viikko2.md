@@ -8,7 +8,7 @@ Lukenut Javan tiedostonkäsittelystä, miten tavuja luetaan sisään ja kirjoite
 
 ### Miten ohjelma on edistynyt?
 
-Luotu Huffmanin solmut ja puu, testattu tämän toimivuus koodin sisäisesti, eli testit eivät ole vielä kunnossa. Tavujen lukeminen tiedostosta onnistuu myös.  
+Luotu Huffmanin solmut ja puu, testattu tämän toimivuus koodin sisäisesti, kun luokka ei ole valmis, eli testit eivät ole vielä kunnossa. Tavujen lukeminen tiedostosta onnistuu myös. Testit tehty tavujen lukemiseen.  
 
 ### Mitä opin tällä viikolla.
 
