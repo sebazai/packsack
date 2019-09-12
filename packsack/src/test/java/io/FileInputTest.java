@@ -29,7 +29,9 @@ public class FileInputTest {
         stream = new FileInput(testfile);
     }
     
-    @After
-    public void tearDown() {
+    @Test
+    public void nextIntReturnsCorrectCharacters() {
+        String result = "" + (char) stream.nextInt() + (char) stream.nextInt() + (char) stream.nextInt();
+        assertEquals("wub", result);
     }
 }
