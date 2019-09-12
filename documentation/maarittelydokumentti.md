@@ -2,15 +2,13 @@
 
 Projektin tarkoitus on totetuttaa javalla ohjelma, joka käyttää Huffmanin algoritmia, pakkaamaan ja purkamaan tiedostoja. Tavoitteena olisi saada tiedostot pienentymään 30-70% alkuperäisestä koostaan ja purettua ilman että tiedosto muuttuisi.
 
-Dokumenttia täydennetään kun lisää ymmärrystä aiheesta on.
-
 ### Käytettävät tietorakenteet ja algoritmit
 
-Huffmanin koodi ja tähän tarvittavat tietorakenteet, kuten minimikeko ja puu, jota tarvitaan koodausta varten. Joku bitti/tavu ratkaisu, joka on vielä hieman epäselvä. 
+Huffmanin koodi ja tähän tarvittavat tietorakenteet, kuten minimikeko ja puu, jota tarvitaan koodausta varten. Tavujen uloskirjoittamiseen toteutetaan oma tavuja ja bittejä käsittelevä luokka.
 
 ### Ratkaistava ongelma
 
-Tiedostojen koon pienentäminen ja pakkaaminen. Tarkoitus on lukea tavut tiedostosta ja tämän perusteella luoda Huffmanin puu, missä merkit jotka esiintyvät usein ovat koodattuna pienillä biteillä. Tiedosto kirjoitetaan uudestaan tavuina tämän puun persuteella, jolloin nämä merkit jotka esiintyvät usein vievät vähemmän tilaa (jos olen ymmärtänyt oikein).
+Tiedostojen koon pienentäminen ja pakkaaminen. Tarkoitus on lukea tavut tiedostosta ja tämän perusteella luoda Huffmanin puu, missä merkit jotka esiintyvät usein ovat koodattuna pienillä biteillä. Tiedosto kirjoitetaan uudestaan tavuina tämän puun persuteella, jolloin nämä merkit jotka esiintyvät usein vievät vähemmän tilaa.
 
 ### Syöte ja tuloste
 
