@@ -34,4 +34,10 @@ public class FileInputTest {
         String result = "" + (char) stream.nextInt() + (char) stream.nextInt() + (char) stream.nextInt();
         assertEquals("wub", result);
     }
+    
+    @Test
+    public void streamClosesCorrectly() {
+        stream.close();
+        assertEquals(-500, stream.nextInt());
+    }
 }
