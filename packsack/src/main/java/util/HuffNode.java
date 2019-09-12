@@ -1,12 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package util;
 
 /**
- *
+ * Node for the Huffman Tree.
  * @author sebserge
  */
 public class HuffNode implements Comparable<HuffNode> {
@@ -15,6 +10,13 @@ public class HuffNode implements Comparable<HuffNode> {
     private char character;
     private Boolean isLeaf;
     
+    /**
+     * Constructor for Huffman tree node leaves.
+     * @param character The character
+     * @param charOccurrence The occurrence of the character
+     * @param left The left child
+     * @param right The right child
+     */
     public HuffNode(char character, int charOccurrence, HuffNode left, HuffNode right) {
         this.character = character;
         this.occurrence = charOccurrence;
@@ -27,13 +29,23 @@ public class HuffNode implements Comparable<HuffNode> {
         }
     }
     
-    public HuffNode(int charOccurrence, HuffNode left, HuffNode right) {
-        this.occurrence = charOccurrence;
+    /**
+     * Constructor for Huffman tree non-leaf nodes.
+     * @param weight Combined weight of left and right child
+     * @param left Nodes left child
+     * @param right Nodes right child
+     */
+    public HuffNode(int weight, HuffNode left, HuffNode right) {
+        this.occurrence = weight;
         this.isLeaf = false;
         this.leftChild = left;
         this.rightChild = right;
     }
     
+    /**
+     * Check if node is a leaf
+     * @return true if no child nodes
+     */
     public boolean getLeaf() {
         return isLeaf;
     }

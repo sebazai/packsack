@@ -14,6 +14,10 @@ import java.util.PriorityQueue;
 public class HuffTree {
     private HuffNode root;
     
+    /**
+     * Function to build the Huffman tree
+     * @param occurrence array containing the amount of occurrence of bytes.
+     */
     public void buildHuffTree(int[] occurrence) {
         PriorityQueue<HuffNode> huffTree = new PriorityQueue<>();
         for (char i = 0; i < 256; i++) {
@@ -22,6 +26,7 @@ public class HuffTree {
                 huffTree.add(new HuffNode((char) (byte) i, occurrence[i], null, null));
             }
         }
+        
         while (huffTree.size() > 1) {
             HuffNode leftNode = huffTree.poll();
             HuffNode rightNode = huffTree.poll();
