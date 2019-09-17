@@ -58,7 +58,7 @@ public class HuffNodeTest {
     
     @Test
     public void getCharacterReturnsCorrectChar() {
-        assertEquals('a', nodeA.getCharacter());
+        assertEquals('a', (char) nodeA.getCharacter());
     }
     
     @Test
