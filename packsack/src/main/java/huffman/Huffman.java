@@ -100,18 +100,22 @@ public class Huffman {
     public void writeEncodedData(FileInput inputStream, FileOutput outputStream, String[] encodingTable) {
         String encodedString = "";
         for (int i = inputStream.nextInt(); i != -500; i = inputStream.nextInt()) {
-            encodedString += encodingTable[this.toUnsignedInt(i)];
-            System.out.println(encodedString);
-//            if(encodedString.length() >= 8) {
-//                encodedString = writeToOutputFile(encodedString, outputStream);
-//            }
-//        }
-//        
-//        if (!encodedString.isEmpty()) {
-//            for(int i = encodedString.length(); i < 8; i++) {
-//                encodedString += "0";
-//            }
-//            encodedString = writeToOutputFile(encodedString, outputStream);
+            int unSigned = this.toUnsignedInt(i);
+            if(encodingTable[unSigned] == null) {
+                break;
+            } else {
+                encodedString += encodingTable[unSigned];
+            }
+            if(encodedString.length() >= 8) {
+                encodedString = writeToOutputFile(encodedString, outputStream);
+            }
+        }
+        
+        if (!encodedString.isEmpty()) {
+            for(int i = encodedString.length(); i < 8; i++) {
+                encodedString += "0";
+            }
+            encodedString = writeToOutputFile(encodedString, outputStream);
         }
         
         
