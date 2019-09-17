@@ -21,6 +21,10 @@ public class Huffman {
         this.treeAsBinary = "";
     }
     
+    /**
+     * Huffman compress
+     * @param filePath Uncompressed file path
+     */
     public void compress(String filePath) {
         FileInput stream = new FileInput(filePath);
         int[] occurrences = new int[256];
@@ -39,13 +43,24 @@ public class Huffman {
         String[] codeTable = new String[256];
         createEncodingTable(codeTable, rootnode, "");
 //        System.out.println(Integer.toBinaryString(((char) 'a' & 0xFF) + 256) );
-//        for(int i = 0; i < codeTable.length; i++) {
-//            if(codeTable[i] != null ) System.out.println(i + " " + codeTable[i]);
-//        }
-        writeTree(rootnode);
+        for(int i = 0; i < codeTable.length; i++) {
+            if(codeTable[i] != null ) System.out.println(i + " " + codeTable[i]);
+        }
+        System.out.println(byteToString('A'));
+        this.writeTree(rootnode);
+        
+        System.out.println(treeAsBinary);
+        this.padTreeBinaryWithZerosAtEnd();
+        System.out.println(treeAsBinary);
         
     }
     
+    /**
+     * Create encoding table for compressing
+     * @param table Encoding table for characters
+     * @param node 
+     * @param code 
+     */
     public void createEncodingTable(String[] table, HuffNode node, String code) {
         if (node.isLeaf()) {
             table[node.getCharacter() & 0xFF] = code;
@@ -56,7 +71,7 @@ public class Huffman {
     }
     /**
      * Write HuffTree recursively to binary string.
-     * @param node start from root
+     * @param node root node
      */
     public void writeTree(HuffNode node) {
         if (node.isLeaf()) {
@@ -67,6 +82,15 @@ public class Huffman {
         treeAsBinary = treeAsBinary.concat("0");
         writeTree(node.getLeftNode());
         writeTree(node.getRightNode());
+    }
+    
+    /**
+     * Pad treeAsBinary String with zeros so it is divisible with 8.
+     */
+    public void padTreeBinaryWithZerosAtEnd() {
+         for (int i = 0; i < treeAsBinary.length() % 8; i++) {
+            treeAsBinary += "0";
+        }
     }
     
     /**
