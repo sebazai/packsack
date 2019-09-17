@@ -45,7 +45,7 @@ public class Huffman {
     }
     
     public void createEncodingTable(String[] table, HuffNode node, String code) {
-        if (node.getLeaf()) {
+        if (node.isLeaf()) {
             table[node.getCharacter() & 0xFF] = code;
             return;
         }

@@ -46,7 +46,7 @@ public class HuffNode implements Comparable<HuffNode> {
      * Check if node is a leaf
      * @return true if no child nodes
      */
-    public boolean getLeaf() {
+    public boolean isLeaf() {
         return isLeaf;
     }
     
@@ -66,6 +66,7 @@ public class HuffNode implements Comparable<HuffNode> {
         return this.rightChild;
     }
     
+    @Override
     public int compareTo(HuffNode t) {
         return this.occurrence - t.occurrence;
     }
