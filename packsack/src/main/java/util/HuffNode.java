@@ -7,7 +7,7 @@ package util;
 public class HuffNode implements Comparable<HuffNode> {
     private int occurrence;
     private HuffNode leftChild, rightChild;
-    private char character;
+    private Character character;
     private Boolean isLeaf;
     
     /**
@@ -40,6 +40,7 @@ public class HuffNode implements Comparable<HuffNode> {
         this.isLeaf = false;
         this.leftChild = left;
         this.rightChild = right;
+        this.character = null;
     }
     
     /**
@@ -50,7 +51,7 @@ public class HuffNode implements Comparable<HuffNode> {
         return isLeaf;
     }
     
-    public char getCharacter() {
+    public Character getCharacter() {
         return this.character;
     }
     
