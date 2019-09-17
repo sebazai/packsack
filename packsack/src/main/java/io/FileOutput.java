@@ -15,6 +15,7 @@ public class FileOutput {
     FileOutputStream stream;
     
     public FileOutput(String path) {
+        path += ".sebbe";
         try {
             stream = new FileOutputStream(path);
         } catch (FileNotFoundException e) {
@@ -30,7 +31,15 @@ public class FileOutput {
         }
     }
     
-    public void close() throws IOException {
+    public void write(byte[] byteArray) {
+        try {
+            stream.write(byteArray);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void close() {
         try {
             stream.close();
         } catch (IOException e) {

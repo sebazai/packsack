@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package io;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -30,9 +31,14 @@ public class FileInput {
         try {
             return stream.read();
         } catch (IOException ex) {
-            Logger.getLogger(FileInput.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
+            return -500;
         }
-        return -500;
+        
+    }
+    
+    public long size() {
+        return new File(path).length();
     }
     
     public void close() {

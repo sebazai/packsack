@@ -5,8 +5,7 @@
  */
 package huffman;
 import io.FileInput;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import io.FileOutput;
 import util.HuffNode;
 import util.HuffTree;
 /**
@@ -14,7 +13,7 @@ import util.HuffTree;
  * @author sebserge
  */
 public class Huffman {
-    private HuffTree tree;
+    private final HuffTree tree;
     private String treeAsBinary;
     public Huffman() {
         this.tree = new HuffTree();
@@ -42,24 +41,35 @@ public class Huffman {
         
         String[] codeTable = new String[256];
         createEncodingTable(codeTable, rootnode, "");
-//        System.out.println(Integer.toBinaryString(((char) 'a' & 0xFF) + 256) );
-        for(int i = 0; i < codeTable.length; i++) {
-            if(codeTable[i] != null ) System.out.println(i + " " + codeTable[i]);
-        }
-        System.out.println(byteToString('A'));
+////        System.out.println(Integer.toBinaryString(((char) 'a' & 0xFF) + 256) );
+//        for(int i = 0; i < codeTable.length; i++) {
+//            if(codeTable[i] != null ) System.out.println(i + " " + codeTable[i]);
+//        }
+//        System.out.println(byteToString('A'));
+
         this.writeTree(rootnode);
-        
-        System.out.println(treeAsBinary);
-        this.padTreeBinaryWithZerosAtEnd();
-        System.out.println(treeAsBinary);
-        
+        treeAsBinary = this.padBinaryStringWithZerosAtEnd(treeAsBinary);
+        byte[] treeAsBytes = new byte[treeAsBinary.length() / 8];
+        for (int i = 0; i < treeAsBinary.length(); i++) {
+            treeAsBytes[i] = this.stringToByte(treeAsBinary.substring(0, 8));
+            System.out.println(treeAsBytes[i]);
+            treeAsBinary = treeAsBinary.substring(8);
+        }
+        FileInput inputStream = new FileInput(filePath);
+        FileOutput outputStream = new FileOutput(filePath);
+        byte[] fileSize = this.fileSizeToBytes((int) inputStream.size());
+        outputStream.write(fileSize);
+        outputStream.write(treeAsBytes);
+        writeEncodedData(inputStream, outputStream, codeTable);
+        inputStream.close();
+        outputStream.close();
     }
     
     /**
-     * Create encoding table for compressing
+     * Create encoding table of tree recursively
      * @param table Encoding table for characters
-     * @param node 
-     * @param code 
+     * @param node Node to traverse
+     * @param code Binary string code for nodes created recursively
      */
     public void createEncodingTable(String[] table, HuffNode node, String code) {
         if (node.isLeaf()) {
@@ -69,6 +79,9 @@ public class Huffman {
         createEncodingTable(table, node.getLeftNode(), code + "0");
         createEncodingTable(table, node.getRightNode(), code + "1");
     }
+    
+    
+    
     /**
      * Write HuffTree recursively to binary string.
      * @param node root node
@@ -84,13 +97,44 @@ public class Huffman {
         writeTree(node.getRightNode());
     }
     
-    /**
-     * Pad treeAsBinary String with zeros so it is divisible with 8.
-     */
-    public void padTreeBinaryWithZerosAtEnd() {
-         for (int i = 0; i < treeAsBinary.length() % 8; i++) {
-            treeAsBinary += "0";
+    public void writeEncodedData(FileInput inputStream, FileOutput outputStream, String[] encodingTable) {
+        String encodedString = "";
+        for (int i = inputStream.nextInt(); i != -500; i = inputStream.nextInt()) {
+            encodedString += encodingTable[this.toUnsignedInt(i)];
+            System.out.println(encodedString);
+//            if(encodedString.length() >= 8) {
+//                encodedString = writeToOutputFile(encodedString, outputStream);
+//            }
+//        }
+//        
+//        if (!encodedString.isEmpty()) {
+//            for(int i = encodedString.length(); i < 8; i++) {
+//                encodedString += "0";
+//            }
+//            encodedString = writeToOutputFile(encodedString, outputStream);
         }
+        
+        
+    }
+    
+    public String writeToOutputFile(String toWrite, FileOutput outputStream) {
+        while(toWrite.length() >= 8) {
+            outputStream.write(this.stringToByte(toWrite.substring(0,8)));
+            toWrite = toWrite.substring(8);
+        }
+        return toWrite;
+    }
+    
+    /**
+     * Pad String with zeros so it is divisible with 8.
+     * 
+     * @return Padded string with zeros at end
+     */
+    public String padBinaryStringWithZerosAtEnd(String stringToPad) {
+         for (int i = 0; i < stringToPad.length() % 8; i++) {
+            stringToPad += "0";
+        }
+        return stringToPad;
     }
     
     /**
@@ -112,5 +156,22 @@ public class Huffman {
      */
     public int toUnsignedInt(int value) {
         return (value & 0xFF);
+    }
+    
+    /**
+     * Convert a String with length of 8 to a byte.
+     * @param toByte the string to convert
+     * @return byte of the binary string
+     */
+    public byte stringToByte(String toByte) {
+        return (byte) Short.parseShort(toByte,2);
+    }
+    
+    public byte[] fileSizeToBytes(int size) {
+        byte[] bytes = new byte[4];
+        for (int i = 0; i < 4; i++) {
+            bytes[i] = (byte)(size >>> (i * 8));
+        }
+        return bytes;
     }
 }
