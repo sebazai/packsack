@@ -44,6 +44,15 @@ public class HuffTreeTest {
     }
     
     @Test
+    public void rootIsNotLeaf() {
+        occurrences[0] = 1;
+        occurrences[1] = 2;
+        tree.buildHuffTree(occurrences);
+        HuffNode root = tree.getRoot();
+        assertFalse(root.isLeaf());
+    }
+    
+    @Test
     public void oneOccurrenceTreeTest() {
         occurrences[200] = 100;
         tree.buildHuffTree(occurrences);

@@ -41,4 +41,28 @@ public class HuffNodeTest {
         HuffNode nodeB = new HuffNode('b', 10, null, null);
         assertEquals(0, nodeA.compareTo(nodeB));
     }
+    
+    @Test
+    public void isLeafReturnsFalseIfNodeHasChildren() {
+        HuffNode nodeB = new HuffNode('b', 12, null, null);
+        HuffNode nodeC = new HuffNode('c', 16, nodeB, null);
+        assertFalse(nodeC.isLeaf());
+    }
+    
+    @Test
+    public void isLeafReturnsFalseIfNodeHasChildren2() {
+        HuffNode nodeB = new HuffNode('b', 12, null, null);
+        HuffNode nodeC = new HuffNode(16, nodeB, nodeA);
+        assertFalse(nodeC.isLeaf());
+    }
+    
+    @Test
+    public void getCharacterReturnsCorrectChar() {
+        assertEquals('a', nodeA.getCharacter());
+    }
+    
+    @Test
+    public void getOccurrencesReturnsCorrectAmount() {
+        assertEquals(10, nodeA.getOccurrence());
+    }
 }
