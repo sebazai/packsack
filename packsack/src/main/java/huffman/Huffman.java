@@ -15,9 +15,10 @@ import util.HuffTree;
  */
 public class Huffman {
     private HuffTree tree;
-
+    private String treeAsBinary;
     public Huffman() {
         this.tree = new HuffTree();
+        this.treeAsBinary = "";
     }
     
     public void compress(String filePath) {
@@ -41,7 +42,7 @@ public class Huffman {
 //        for(int i = 0; i < codeTable.length; i++) {
 //            if(codeTable[i] != null ) System.out.println(i + " " + codeTable[i]);
 //        }
-        System.out.println(byteToString('b'));
+        writeTree(rootnode);
         
     }
     
@@ -53,9 +54,19 @@ public class Huffman {
         createEncodingTable(table, node.getLeftNode(), code + "0");
         createEncodingTable(table, node.getRightNode(), code + "1");
     }
-    
-    public void buildTreeString(HuffNode root) {
-        
+    /**
+     * Write HuffTree recursively to binary string.
+     * @param node start from root
+     */
+    public void writeTree(HuffNode node) {
+        if (node.isLeaf()) {
+            treeAsBinary = treeAsBinary.concat("1");
+            treeAsBinary = treeAsBinary.concat(byteToString(node.getCharacter()));
+            return;
+        }
+        treeAsBinary = treeAsBinary.concat("0");
+        writeTree(node.getLeftNode());
+        writeTree(node.getRightNode());
     }
     
     /**
