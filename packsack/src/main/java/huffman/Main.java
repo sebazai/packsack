@@ -1,6 +1,5 @@
 package huffman;
 
-import java.io.IOException;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -20,8 +19,9 @@ public class Main {
      */
     public static void main(String[] args) {
         Huffman huff = new Huffman();
-        huff.compress("/home/sebserge/Downloads/testi.txt");
+        huff.compress("/home/sebserge/Downloads/testi2.txt");
         
+        huff.decompress("/home/sebserge/Downloads/testi2.txt.sebbe", "/home/sebserge/Downloads/testausta");
     }
 
 }

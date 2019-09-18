@@ -14,8 +14,10 @@ import java.io.IOException;
 public class FileOutput {
     FileOutputStream stream;
     
-    public FileOutput(String path) {
-        path += ".sebbe";
+    public FileOutput(String path, boolean decompress) {
+        if (!decompress) {
+            path += ".sebbe";
+        }
         try {
             stream = new FileOutputStream(path);
         } catch (FileNotFoundException e) {

@@ -55,9 +55,10 @@ public class ByteStringManipulator {
     
     public byte[] fileSizeToBytes(int size) {
         byte[] bytes = new byte[4];
-        for (int i = 0; i < 4; i++) {
-            bytes[i] = (byte)(size >>> (i * 8));
-        }
+        bytes[0] = (byte) (size >>> 24);
+        bytes[1] = (byte) (size >>> 16);
+        bytes[2] = (byte) (size >>> 8);
+        bytes[3] = (byte) (size);
         return bytes;
     }
 }

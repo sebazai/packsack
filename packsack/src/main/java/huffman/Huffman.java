@@ -6,6 +6,8 @@
 package huffman;
 import io.FileInput;
 import io.FileOutput;
+import java.util.ArrayDeque;
+import java.util.Deque;
 import util.ByteStringManipulator;
 import util.HuffNode;
 import util.HuffTree;
@@ -16,11 +18,15 @@ import util.HuffTree;
 public class Huffman {
     private final HuffTree tree;
     private String treeAsBinary;
+    private String wholeBinaryString;
+    private String dataToDecode;
     private ByteStringManipulator manipulator;
     public Huffman() {
         this.tree = new HuffTree();
         this.treeAsBinary = "";
-        manipulator = new ByteStringManipulator();
+        this.dataToDecode = "";
+        this.wholeBinaryString = "";
+        this.manipulator = new ByteStringManipulator();
     }
     
     /**
@@ -44,18 +50,18 @@ public class Huffman {
         this.createEncodingTable(codeTable, rootnode, "");
 
         this.writeTree(rootnode);
-        treeAsBinary = manipulator.padBinaryStringWithZerosAtEnd(treeAsBinary);
-        byte[] treeAsBytes = new byte[treeAsBinary.length() / 8];
-        
-        for (int i = 0; i < treeAsBinary.length(); i++) {
-            treeAsBytes[i] = manipulator.stringToByte(treeAsBinary.substring(0, 8));
-            treeAsBinary = treeAsBinary.substring(8);
+        for (int i = 0; i < treeAsBinary.length() % 8; i++) {
+            treeAsBinary += "0";
         }
+        System.out.println(treeAsBinary);
+
+        System.out.println(treeAsBinary.length());
+        byte[] treeAsBytes = this.convertTreeBinaryStringToBytes();
         
         FileInput inputStream = new FileInput(filePath);
-        FileOutput outputStream = new FileOutput(filePath);
+        FileOutput outputStream = new FileOutput(filePath, false);
         
-        byte[] fileSize = manipulator.fileSizeToBytes((int) inputStream.size());
+        byte[] fileSize = manipulator.fileSizeToBytes(inputStream.size());
         
         outputStream.write(fileSize);
         outputStream.write(treeAsBytes);
@@ -95,6 +101,24 @@ public class Huffman {
         treeAsBinary = treeAsBinary.concat("0");
         writeTree(node.getLeftNode());
         writeTree(node.getRightNode());
+    }
+    
+    /**
+     * Converts the treeAsBinary String to an array of bytes for writing to the output
+     * @return array of bytes
+     */
+    public byte[] convertTreeBinaryStringToBytes() {
+//        treeAsBinary = manipulator.padBinaryStringWithZerosAtEnd(treeAsBinary);
+//        for (int i = 0; i < treeAsBinary.length() % 8; i++) {
+//            treeAsBinary += "0";
+//        }
+        byte[] treeAsBytes = new byte[treeAsBinary.length() / 8];
+        
+        for (int i = 0; i < treeAsBinary.length(); i++) {
+            treeAsBytes[i] = manipulator.stringToByte(treeAsBinary.substring(0, 8));
+            treeAsBinary = treeAsBinary.substring(8);
+        }
+        return treeAsBytes;
     }
     
     /**
@@ -140,5 +164,77 @@ public class Huffman {
         }
         return toWrite;
     }
-  
+    
+    /**
+     * Decompress a Huffman compressed file by reading original file size, building the tree and finally writing out the data using this tree.
+     * @param inputFilePath File to be decompressed
+     * @param outputFilePath File to save
+     */
+    public void decompress(String inputFilePath, String outputFilePath) {
+        FileInput inputstream = new FileInput(inputFilePath);
+        FileOutput outputstream = new FileOutput(outputFilePath, true);
+        dataToDecode = "";
+        int fileSize = inputstream.readFileSize();
+        treeAsBinary = manipulator.byteToString(inputstream.nextInt());
+        HuffNode rootnode = this.decodeTree(inputstream);
+        System.out.println(this.wholeBinaryString);
+        System.out.println(this.wholeBinaryString.length());
+        for(int i = 0; i < fileSize; i++) {
+            byte dataToWrite = decodeData(rootnode, inputstream);
+            outputstream.write(dataToWrite);
+        }
+    }
+    
+    
+    /**
+     * Decode the compressed data recursively
+     * @param node
+     * @param stream
+     * @return 
+     */
+    public byte decodeData(HuffNode node, FileInput stream) {
+        if (node.getCharacter() != null) {
+            return (byte) (char) node.getCharacter();
+        }
+        if (dataToDecode.isEmpty()) {
+            dataToDecode += manipulator.byteToString(stream.nextInt());
+        }
+        
+        if (dataToDecode.charAt(0) == '0') {
+            dataToDecode = dataToDecode.substring(1);
+            return decodeData(node.getLeftNode(), stream);
+        } else {
+            dataToDecode = dataToDecode.substring(1);
+            return decodeData(node.getRightNode(), stream);
+        }
+    }
+    
+    /**
+     * Build the tree from compressed file recursively
+     * @param stream
+     * @return root node
+     */
+    public HuffNode decodeTree(FileInput stream) {
+        if (treeAsBinary.isEmpty()) {
+            treeAsBinary += manipulator.byteToString(stream.nextInt());
+        }
+        
+        if(treeAsBinary.charAt(0) == '1') {
+            if (treeAsBinary.length() < 9) {
+                treeAsBinary += manipulator.byteToString(stream.nextInt());
+                
+            }
+            String character = treeAsBinary.substring(1, 9);
+            this.wholeBinaryString += treeAsBinary.substring(0, 9);
+//            System.out.println(character + " char");
+            treeAsBinary = treeAsBinary.substring(9);
+//            System.out.println((char) manipulator.stringToByte(character) + " manipulated char");
+            return new HuffNode((char) manipulator.stringToByte(character), 0, null, null);
+        } else {
+            this.wholeBinaryString += treeAsBinary.substring(0, 1);
+            treeAsBinary = treeAsBinary.substring(1);
+            return new HuffNode(0, decodeTree(stream), decodeTree(stream));
+        }
+    }
+    
 }
