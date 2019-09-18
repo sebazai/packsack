@@ -50,12 +50,13 @@ public class Huffman {
         this.createEncodingTable(codeTable, rootnode, "");
 
         this.writeTree(rootnode);
+//        System.out.println(treeAsBinary);
         for (int i = 0; i < treeAsBinary.length() % 8; i++) {
             treeAsBinary += "0";
         }
-        System.out.println(treeAsBinary);
+//        System.out.println(treeAsBinary);
 
-        System.out.println(treeAsBinary.length());
+//        System.out.println(treeAsBinary.length());
         byte[] treeAsBytes = this.convertTreeBinaryStringToBytes();
         
         FileInput inputStream = new FileInput(filePath);
@@ -114,7 +115,7 @@ public class Huffman {
 //        }
         byte[] treeAsBytes = new byte[treeAsBinary.length() / 8];
         
-        for (int i = 0; i < treeAsBinary.length(); i++) {
+        for (int i = 0; i < treeAsBytes.length; i++) {
             treeAsBytes[i] = manipulator.stringToByte(treeAsBinary.substring(0, 8));
             treeAsBinary = treeAsBinary.substring(8);
         }
@@ -225,16 +226,15 @@ public class Huffman {
                 
             }
             String character = treeAsBinary.substring(1, 9);
-            this.wholeBinaryString += treeAsBinary.substring(0, 9);
-//            System.out.println(character + " char");
+//            this.wholeBinaryString += treeAsBinary.substring(0, 9);
             treeAsBinary = treeAsBinary.substring(9);
 //            System.out.println((char) manipulator.stringToByte(character) + " manipulated char");
             return new HuffNode((char) manipulator.stringToByte(character), 0, null, null);
-        } else {
-            this.wholeBinaryString += treeAsBinary.substring(0, 1);
-            treeAsBinary = treeAsBinary.substring(1);
-            return new HuffNode(0, decodeTree(stream), decodeTree(stream));
-        }
+        } 
+//        this.wholeBinaryString += treeAsBinary.substring(0, 1);
+        treeAsBinary = treeAsBinary.substring(1);
+        return new HuffNode(0, decodeTree(stream), decodeTree(stream));
+        
     }
     
 }

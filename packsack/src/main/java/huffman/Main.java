@@ -19,9 +19,9 @@ public class Main {
      */
     public static void main(String[] args) {
         Huffman huff = new Huffman();
-        huff.compress("/home/sebserge/Downloads/testi2.txt");
+        huff.compress("/home/sebserge/Downloads/alice29.txt");
         
-        huff.decompress("/home/sebserge/Downloads/testi2.txt.sebbe", "/home/sebserge/Downloads/testausta");
+        huff.decompress("/home/sebserge/Downloads/alice29.txt.sebbe", "/home/sebserge/Downloads/testausta.txt");
     }
 
 }
