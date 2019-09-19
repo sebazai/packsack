@@ -18,14 +18,12 @@ import util.HuffTree;
 public class Huffman {
     private final HuffTree tree;
     private String treeAsBinary;
-    private String wholeBinaryString;
     private String dataToDecode;
-    private ByteStringManipulator manipulator;
+    private final ByteStringManipulator manipulator;
     public Huffman() {
         this.tree = new HuffTree();
         this.treeAsBinary = "";
         this.dataToDecode = "";
-        this.wholeBinaryString = "";
         this.manipulator = new ByteStringManipulator();
     }
     
@@ -37,10 +35,7 @@ public class Huffman {
         FileInput stream = new FileInput(filePath);
         int[] occurrences = new int[256];
 
-        int nextInt;
-        while ((nextInt = stream.nextInt()) >= 0) {
-          occurrences[manipulator.toUnsignedInt(nextInt)]++;
-        }
+        this.calculateOccurrencesOfCharacters(occurrences, stream);
 
         this.tree.buildHuffTree(occurrences);
         HuffNode rootnode = this.tree.getRoot();
@@ -50,13 +45,6 @@ public class Huffman {
         this.createEncodingTable(codeTable, rootnode, "");
 
         this.writeTree(rootnode);
-//        System.out.println(treeAsBinary);
-        for (int i = 0; i < treeAsBinary.length() % 8; i++) {
-            treeAsBinary += "0";
-        }
-//        System.out.println(treeAsBinary);
-
-//        System.out.println(treeAsBinary.length());
         byte[] treeAsBytes = this.convertTreeBinaryStringToBytes();
         
         FileInput inputStream = new FileInput(filePath);
@@ -73,6 +61,18 @@ public class Huffman {
     }
     
     /**
+     * Calculates the occurrences of characters in the input file to be compressed
+     * @param occurrences Link to the occurrences array
+     * @param stream Input file stream
+     */
+    public void calculateOccurrencesOfCharacters(int[] occurrences, FileInput stream) {
+        int nextInt;
+        while ((nextInt = stream.nextInt()) >= 0) {
+            occurrences[manipulator.toUnsignedInt(nextInt)]++;
+        }
+    }
+    
+    /**
      * Create encoding table of tree recursively
      * @param table Encoding table for characters
      * @param node Node to traverse
@@ -86,8 +86,6 @@ public class Huffman {
         createEncodingTable(table, node.getLeftNode(), code + "0");
         createEncodingTable(table, node.getRightNode(), code + "1");
     }
-    
-    
     
     /**
      * Write HuffTree recursively to binary string.
@@ -109,10 +107,8 @@ public class Huffman {
      * @return array of bytes
      */
     public byte[] convertTreeBinaryStringToBytes() {
-//        treeAsBinary = manipulator.padBinaryStringWithZerosAtEnd(treeAsBinary);
-//        for (int i = 0; i < treeAsBinary.length() % 8; i++) {
-//            treeAsBinary += "0";
-//        }
+        treeAsBinary = manipulator.padBinaryStringWithZerosAtEnd(treeAsBinary);
+
         byte[] treeAsBytes = new byte[treeAsBinary.length() / 8];
         
         for (int i = 0; i < treeAsBytes.length; i++) {
@@ -132,38 +128,22 @@ public class Huffman {
         String encodedString = "";
         for (int i = inputStream.nextInt(); i != -500; i = inputStream.nextInt()) {
             int unSigned = manipulator.toUnsignedInt(i);
-            if(encodingTable[unSigned] == null) {
+            if (encodingTable[unSigned] == null) {
                 break;
             } else {
                 encodedString += encodingTable[unSigned];
             }
-            if(encodedString.length() >= 8) {
-                encodedString = writeToOutputFile(encodedString, outputStream);
+            if (encodedString.length() >= 8) {
+                encodedString = outputStream.writeToOutputFile(encodedString, this.manipulator);
             }
         }
         
         if (!encodedString.isEmpty()) {
-            for(int i = encodedString.length(); i < 8; i++) {
+            for (int i = encodedString.length(); i < 8; i++) {
                 encodedString += "0";
             }
-            encodedString = writeToOutputFile(encodedString, outputStream);
+            encodedString = outputStream.writeToOutputFile(encodedString, this.manipulator);
         }
-        
-        
-    }
-    
-    /**
-     * Writes in 8 bit sequence from the encoded binary string.
-     * @param toWrite Encoded binary string
-     * @param outputStream File output
-     * @return The bits that left in the string
-     */
-    public String writeToOutputFile(String toWrite, FileOutput outputStream) {
-        while(toWrite.length() >= 8) {
-            outputStream.write(manipulator.stringToByte(toWrite.substring(0,8)));
-            toWrite = toWrite.substring(8);
-        }
-        return toWrite;
     }
     
     /**
@@ -174,13 +154,17 @@ public class Huffman {
     public void decompress(String inputFilePath, String outputFilePath) {
         FileInput inputstream = new FileInput(inputFilePath);
         FileOutput outputstream = new FileOutput(outputFilePath, true);
+        
+        // Make sure the Strings are empty.
         dataToDecode = "";
+        treeAsBinary = "";
+        
         int fileSize = inputstream.readFileSize();
+        
         treeAsBinary = manipulator.byteToString(inputstream.nextInt());
         HuffNode rootnode = this.decodeTree(inputstream);
-        System.out.println(this.wholeBinaryString);
-        System.out.println(this.wholeBinaryString.length());
-        for(int i = 0; i < fileSize; i++) {
+        
+        for (int i = 0; i < fileSize; i++) {
             byte dataToWrite = decodeData(rootnode, inputstream);
             outputstream.write(dataToWrite);
         }
@@ -204,10 +188,11 @@ public class Huffman {
         if (dataToDecode.charAt(0) == '0') {
             dataToDecode = dataToDecode.substring(1);
             return decodeData(node.getLeftNode(), stream);
-        } else {
-            dataToDecode = dataToDecode.substring(1);
-            return decodeData(node.getRightNode(), stream);
         }
+        
+        dataToDecode = dataToDecode.substring(1);
+        return decodeData(node.getRightNode(), stream);
+        
     }
     
     /**
@@ -220,21 +205,17 @@ public class Huffman {
             treeAsBinary += manipulator.byteToString(stream.nextInt());
         }
         
-        if(treeAsBinary.charAt(0) == '1') {
+        if (treeAsBinary.charAt(0) == '1') {
             if (treeAsBinary.length() < 9) {
                 treeAsBinary += manipulator.byteToString(stream.nextInt());
-                
             }
             String character = treeAsBinary.substring(1, 9);
-//            this.wholeBinaryString += treeAsBinary.substring(0, 9);
             treeAsBinary = treeAsBinary.substring(9);
-//            System.out.println((char) manipulator.stringToByte(character) + " manipulated char");
             return new HuffNode((char) manipulator.stringToByte(character), 0, null, null);
         } 
-//        this.wholeBinaryString += treeAsBinary.substring(0, 1);
-        treeAsBinary = treeAsBinary.substring(1);
-        return new HuffNode(0, decodeTree(stream), decodeTree(stream));
         
+        treeAsBinary = treeAsBinary.substring(1);
+        return new HuffNode(0, decodeTree(stream), decodeTree(stream));   
     }
     
 }

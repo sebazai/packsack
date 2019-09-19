@@ -13,7 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Input stream for file bytes.
  * @author sebserge
  */
 public class FileInput {
@@ -62,7 +62,7 @@ public class FileInput {
             size[2] = (byte) stream.read();
             size[3] = (byte) stream.read();
             return ByteBuffer.wrap(size).getInt();
-        } catch(IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
             return 0;
         }

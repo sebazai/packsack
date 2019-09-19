@@ -17,7 +17,7 @@ public class ByteStringManipulator {
      * @return Padded string with zeros at end
      */
     public String padBinaryStringWithZerosAtEnd(String stringToPad) {
-         for (int i = 0; i < stringToPad.length() % 8; i++) {
+        for (int i = 0; i < stringToPad.length() % 8; i++) {
             stringToPad += "0";
         }
         return stringToPad;
@@ -50,7 +50,7 @@ public class ByteStringManipulator {
      * @return byte of the binary string
      */
     public byte stringToByte(String toByte) {
-        return (byte) Short.parseShort(toByte,2);
+        return (byte) Short.parseShort(toByte, 2);
     }
     
     public byte[] fileSizeToBytes(int size) {

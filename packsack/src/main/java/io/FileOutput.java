@@ -7,6 +7,7 @@ package io;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import util.ByteStringManipulator;
 /**
  *
  * @author sebserge
@@ -14,6 +15,11 @@ import java.io.IOException;
 public class FileOutput {
     FileOutputStream stream;
     
+    /**
+     * Output stream for file bytes.
+     * @param path Path where to output
+     * @param decompress if false, add .sebbe to file end
+     */
     public FileOutput(String path, boolean decompress) {
         if (!decompress) {
             path += ".sebbe";
@@ -25,6 +31,10 @@ public class FileOutput {
         }
     }
     
+    /**
+     * Write one byte.
+     * @param i 
+     */
     public void write(int i) {
         try {
             stream.write(i);
@@ -33,6 +43,10 @@ public class FileOutput {
         }
     }
     
+    /**
+     * Write an array of bytes.
+     * @param byteArray 
+     */
     public void write(byte[] byteArray) {
         try {
             stream.write(byteArray);
@@ -41,6 +55,23 @@ public class FileOutput {
         }
     }
     
+    /**
+     * Writes in 8 bit sequence from the encoded binary string.
+     * @param toWrite Encoded binary string
+     * @param outputStream File output
+     * @return The bits that left in the string
+     */
+    public String writeToOutputFile(String toWrite, ByteStringManipulator manipulator) {
+        while (toWrite.length() >= 8) {
+            this.write(manipulator.stringToByte(toWrite.substring(0, 8)));
+            toWrite = toWrite.substring(8);
+        }
+        return toWrite;
+    }
+    
+    /**
+     * Close the stream.
+     */
     public void close() {
         try {
             stream.close();
