@@ -53,6 +53,11 @@ public class ByteStringManipulator {
         return (byte) Short.parseShort(toByte, 2);
     }
     
+    /**
+     * Convert the file size from integer to an array of 4 bytes using bit shifting.
+     * @param size the length of file
+     * @return array of 4 bytes
+     */
     public byte[] fileSizeToBytes(int size) {
         byte[] bytes = new byte[4];
         bytes[0] = (byte) (size >>> 24);
