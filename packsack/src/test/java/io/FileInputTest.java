@@ -36,4 +36,15 @@ public class FileInputTest {
         stream.close();
         assertEquals(-500, stream.nextInt());
     }
+    
+    @Test
+    public void fileSizeCorrect() {
+        assertEquals(19, stream.size());
+    }
+    
+    @Test
+    public void readFileSizeReturnsCorrectValue() {
+        assertEquals(98, stream.readFileSize() & 0xFF);
+    }
+    
 }
