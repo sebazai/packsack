@@ -47,4 +47,12 @@ public class ByteStringManipulatorTest {
         byte a = manipulator.stringToByte("10101010");
         assertEquals((byte) 0xAA, a);
     }
+    
+    @Test
+    public void fileSizeToBytesIsCorrect() {
+        byte[] bytes = manipulator.fileSizeToBytes(14);
+        byte[] shouldbe = {0,0,0,14};
+        assertEquals(shouldbe[2], bytes[2]);
+        assertEquals(shouldbe[3], bytes[3]);
+    }
 }

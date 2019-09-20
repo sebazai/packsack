@@ -8,7 +8,7 @@ Tehnyt testejä parille luokalle ja implementoinut Huffmanin pakkaus ja purkausa
 
 ### Miten ohjelma on edistynyt?
 
-Ohjelma on edistynyt hyvin pitkälle. Testejä lukuunottamatta..
+Ohjelma on edistynyt hyvin pitkälle. Testejä tehty io ja util pakkauksen luokille.
 
 ### Mitä opin tällä viikolla.
 
@@ -16,4 +16,4 @@ Hexaeditorin käytön. Bitshiftaamisen.
 
 ### Seuraavaksi
 
-Testien tekeminen ja varmaan koodin refaktorointia ja pilkon mahdollisesti koodia pienempiin funktioihin ja kommentoin koodia. Myös muun dokumentoinnin aloittaminen ja tietorakenteiden, kuten priorityqueuen itse tekeminen.
+Testien tekeminen Huffman luokkaan ja varmaan koodin refaktorointia ja pilkon mahdollisesti koodia pienempiin funktioihin ja kommentoin koodia. Myös muun dokumentoinnin aloittaminen ja tietorakenteiden, kuten priorityqueuen itse tekeminen.

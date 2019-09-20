@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import util.ByteStringManipulator;
 
 /**
  *
@@ -42,4 +43,28 @@ public class FileOutputTest {
         inputStream.close();
     }
     
+    @Test
+    public void writeToOutputAString() {
+        FileOutput stream = new FileOutput(testfile, false);
+        FileInput inputStream = new FileInput(testfile + ".sebbe");
+        
+        stream.writeToOutputFile("01100010", new ByteStringManipulator());
+        assertEquals((byte) (char) 'b', inputStream.nextInt());
+        stream.close();
+        inputStream.close();
+    }
+    
+    @Test
+    public void writeByteArrayWorks() {
+        FileOutput stream = new FileOutput(testfile, false);
+        FileInput inputStream = new FileInput(testfile + ".sebbe");
+        
+        byte[] arrayToWrite = {0, (byte) (char) 'a', 0, 0};
+        stream.write(arrayToWrite);
+        //First is empty
+        int shoulNotbe = inputStream.nextInt();
+        int shouldBe = inputStream.nextInt();
+        assertEquals((byte) (char) 'a', shouldBe);
+    
+    }
 }
