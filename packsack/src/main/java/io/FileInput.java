@@ -9,8 +9,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.ByteBuffer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Input stream for file bytes.
@@ -75,7 +73,7 @@ public class FileInput {
         try {
             stream.close();
         } catch (IOException ex) {
-            Logger.getLogger(FileInput.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
     }
 }

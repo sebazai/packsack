@@ -6,13 +6,12 @@
 package huffman;
 import io.FileInput;
 import io.FileOutput;
-import java.util.ArrayDeque;
-import java.util.Deque;
 import util.ByteStringManipulator;
 import util.HuffNode;
 import util.HuffTree;
+
 /**
- *
+ * Huffman compress and decompress class
  * @author sebserge
  */
 public class Huffman {
