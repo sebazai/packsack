@@ -17,3 +17,5 @@ Hexaeditorin käytön. Bitshiftaamisen.
 ### Seuraavaksi
 
 Testien tekeminen Huffman luokkaan ja varmaan koodin refaktorointia ja pilkon mahdollisesti koodia pienempiin funktioihin ja kommentoin koodia. Myös muun dokumentoinnin aloittaminen ja tietorakenteiden, kuten priorityqueuen itse tekeminen.
+
+Myös tekstipohjaisen käyttöliittymän tekeminen, jotta voi valita minkä tiedoston pakkaa ja purkaa olisi hyvä saada aikaiseksi ennen vertaispalautteita.
