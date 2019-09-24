@@ -5,16 +5,14 @@
  */
 package huffman;
 
-import io.FileInput;
-import io.FileOutput;
-import org.junit.After;
-import org.junit.AfterClass;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Arrays;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
-import util.HuffNode;
-import util.HuffTree;
 
 /**
  *
@@ -23,19 +21,32 @@ import util.HuffTree;
 public class HuffmanTest {
     String testfile = getClass().getClassLoader().getResource("hufftreetestfile").getPath();
     Huffman huffman; 
+    byte[] compressedBytes;
             
     @Before
-    public void setUp() {
+    public void setUp() throws IOException {
         Huffman huffman = new Huffman();
+        huffman.compress(testfile);
+        String compressed = testfile.concat(".sebbe");
+        compressedBytes = Files.readAllBytes(Paths.get(compressed));
     }
     
     @Test
-    public void HuffmanDecompress() {
-//        String decompressFile = getClass().getClassLoader().getResource("testDecompression").getPath();
-//        FileOutput output = new FileOutput(decompressFile, true);
-//        huffman.decompress(decompressFile, decompressFile + ".txt");
-//        FileInput input = new FileInput(decompressFile + ".txt");
-//        assertEquals(0, input.nextInt());
+    public void FileSizeCorrectInCompressedFile() {
+        byte[] sizeIsCorrect = {0,0,0,14};
+        assertEquals(sizeIsCorrect[3], compressedBytes[3]);
+    }
+    
+    @Test
+    public void treeStartsCorrectlyInCompressedFile() {
+        byte[] treeStartShouldBe = {80, 84, 36};
+        boolean isTrue = true;
+        for (int i = 0; i < 3; i++) {
+            if(treeStartShouldBe[i] != compressedBytes[i+4]) {
+                isTrue = false;
+            }
+        }
+        assertTrue(isTrue);
     }
     
 }

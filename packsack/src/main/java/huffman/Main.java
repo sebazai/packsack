@@ -20,23 +20,30 @@ public class Main {
             String filePath = args[1];
             if (todo.equals("-co")) {
                 Huffman huff = new Huffman();
+                
                 long startTime = System.currentTimeMillis();
                 double sizeAtStart = (double) huff.compress(filePath);
                 long endTime = System.currentTimeMillis();
-                System.out.println("Time to compress: "  + (endTime - startTime) + " ms");
+                
+                // Read compressed file size
                 FileInput file = new FileInput(filePath + ".sebbe");
                 double sizeAtEnd = (double) file.size();
                 file.close();
+                
+                System.out.println("Time to compress: "  + (endTime - startTime) + " ms");
                 System.out.println("Size of original file: " + sizeAtStart + " Bytes");
                 System.out.println("Size of compressed file: " + sizeAtEnd + " Bytes");
                 System.out.println("Total compression ratio: " + df2.format(sizeAtStart / sizeAtEnd));
                 System.out.println("Space saved: " + df2.format((1-(sizeAtEnd/sizeAtStart))*100) + " %");
             } else if (todo.equals("-de")) {
                 String outputPath = args[2];
+                
                 Huffman huff = new Huffman();
+                
                 long startTime = System.currentTimeMillis();
                 huff.decompress(filePath, outputPath);
                 long endTime = System.currentTimeMillis();
+                
                 System.out.println("Time to decompress: " + (endTime - startTime));
             } else {
                 throw new Exception();
