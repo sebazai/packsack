@@ -3,23 +3,17 @@ package huffman;
 import io.FileInput;
 import java.text.DecimalFormat;
 
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- *
+ * Main.java
  * @author sebserge
  */
 public class Main {
-
+    
+    private static DecimalFormat df2 = new DecimalFormat("#.##");
+    
     /**
      * @param args the command line arguments
      */
-    private static DecimalFormat df2 = new DecimalFormat("#.##");
     public static void main(String[] args) {
         try {
             String todo = args[0];
@@ -29,7 +23,7 @@ public class Main {
                 long startTime = System.currentTimeMillis();
                 double sizeAtStart = (double) huff.compress(filePath);
                 long endTime = System.currentTimeMillis();
-                System.out.println("Time to compress: "  + (endTime - startTime));
+                System.out.println("Time to compress: "  + (endTime - startTime) + " ms");
                 FileInput file = new FileInput(filePath + ".sebbe");
                 double sizeAtEnd = (double) file.size();
                 file.close();

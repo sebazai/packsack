@@ -143,7 +143,7 @@ public class Huffman {
             for (int i = encodedString.length(); i < 8; i++) {
                 encodedString += "0";
             }
-            encodedString = outputStream.writeToOutputFile(encodedString, this.manipulator);
+            outputStream.writeToOutputFile(encodedString, this.manipulator);
         }
     }
     
