@@ -30,8 +30,9 @@ public class Huffman {
      * Huffman compress
      * @param filePath Uncompressed file path
      */
-    public void compress(String filePath) {
+    public int compress(String filePath) {
         FileInput stream = new FileInput(filePath);
+        int sizeOfFile = stream.size();
         int[] occurrences = new int[256];
 
         this.calculateOccurrencesOfCharacters(occurrences, stream);
@@ -51,12 +52,13 @@ public class Huffman {
         
         byte[] fileSize = manipulator.fileSizeToBytes(inputStream.size());
         
-        outputStream.write(fileSize);
-        outputStream.write(treeAsBytes);
+        outputStream.writeArray(fileSize);
+        outputStream.writeArray(treeAsBytes);
         writeEncodedData(inputStream, outputStream, codeTable);
         
         inputStream.close();
         outputStream.close();
+        return sizeOfFile;
     }
     
     /**
@@ -125,7 +127,7 @@ public class Huffman {
      */
     public void writeEncodedData(FileInput inputStream, FileOutput outputStream, String[] encodingTable) {
         String encodedString = "";
-        for (int i = inputStream.nextInt(); i != -500; i = inputStream.nextInt()) {
+        for (int i = inputStream.nextInt(); i != -1; i = inputStream.nextInt()) {
             int unSigned = manipulator.toUnsignedInt(i);
             if (encodingTable[unSigned] == null) {
                 break;
@@ -167,6 +169,8 @@ public class Huffman {
             byte dataToWrite = decodeData(rootnode, inputstream);
             outputstream.write(dataToWrite);
         }
+        outputstream.close();
+        inputstream.close();
     }
     
     

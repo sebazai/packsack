@@ -6,6 +6,7 @@
 package huffman;
 
 import io.FileInput;
+import io.FileOutput;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -21,14 +22,20 @@ import util.HuffTree;
  */
 public class HuffmanTest {
     String testfile = getClass().getClassLoader().getResource("hufftreetestfile").getPath();
+    Huffman huffman; 
+            
     @Before
     public void setUp() {
-        FileInput stream = new FileInput(testfile);
-        
+        Huffman huffman = new Huffman();
     }
     
     @Test
-    public void HuffmanEncodingTest() {
-        
-    }          
+    public void HuffmanDecompress() {
+//        String decompressFile = getClass().getClassLoader().getResource("testDecompression").getPath();
+//        FileOutput output = new FileOutput(decompressFile, true);
+//        huffman.decompress(decompressFile, decompressFile + ".txt");
+//        FileInput input = new FileInput(decompressFile + ".txt");
+//        assertEquals(0, input.nextInt());
+    }
+    
 }

@@ -34,7 +34,7 @@ public class FileInputTest {
     @Test
     public void streamClosesCorrectly() {
         stream.close();
-        assertEquals(-500, stream.nextInt());
+        assertEquals(-1, stream.nextInt());
     }
     
     @Test

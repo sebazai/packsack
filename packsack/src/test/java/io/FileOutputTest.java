@@ -60,7 +60,7 @@ public class FileOutputTest {
         FileInput inputStream = new FileInput(testfile + ".sebbe");
         
         byte[] arrayToWrite = {0, (byte) (char) 'a', 0, 0};
-        stream.write(arrayToWrite);
+        stream.writeArray(arrayToWrite);
         //First is empty
         int shoulNotbe = inputStream.nextInt();
         int shouldBe = inputStream.nextInt();

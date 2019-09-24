@@ -47,7 +47,7 @@ public class FileOutput {
      * Write an array of bytes.
      * @param byteArray 
      */
-    public void write(byte[] byteArray) {
+    public void writeArray(byte[] byteArray) {
         try {
             stream.write(byteArray);
         } catch (IOException e) {
@@ -58,6 +58,7 @@ public class FileOutput {
     /**
      * Writes in 8 bit sequence from the encoded binary string.
      * @param toWrite Encoded binary string
+     * @param manipulator String and byte manipulator
      * @param outputStream File output
      * @return The bits that left in the string
      */

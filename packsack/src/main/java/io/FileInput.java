@@ -35,9 +35,8 @@ public class FileInput {
             return stream.read();
         } catch (IOException ex) {
             ex.printStackTrace();
-            return -500;
         }
-        
+        return -1;
     }
     
     /**
