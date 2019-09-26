@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package util;
+package huffman.util;
 
+import huffman.util.HuffNode;
+import huffman.util.HuffTree;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
