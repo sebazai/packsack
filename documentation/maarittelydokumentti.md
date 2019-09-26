@@ -21,7 +21,8 @@ Tilavaativuus tulee olemaan O(N), missä N on tiedoston koko.
 
 ### Lähteet
 
-#### Huffman
+#### Huffman & Min PriorityQueue
 
 * [ECE264: Huffman Coding - Purdue University](https://engineering.purdue.edu/ece264/17au/hw/HW13?alt=huffman)
 * [Introduction to Data Compression](http://www.cs.cmu.edu/afs/cs/project/pscico-guyb/realworld/www/compression.pdf)
+* Sedgewick Robert & Wayne Kevin, Algorithms 4th Edition (2011), Addison-Wesley Professional
