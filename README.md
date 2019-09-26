@@ -43,7 +43,7 @@ java -jar packsack-1.0-SNAPSHOT.jar [argumentit]
 
 Hyväksyttävät argumentit ovat: 
 
-* [-co *tiedoston nimi*]
-* [-de *purettava tiedosto* *puretaan tänne nimellä*]
+* [-co *tiedoston-nimi*]
+* [-de *purettava-tiedosto* *puretaan-tänne-nimellä*]
 
 Missä -co pakkaa tiedoston käyttäen Huffmanin ja -de purkaa tiedoston joka on pakattu ja kirjoittaa sen ulos haluamaansa paikkaan. 
