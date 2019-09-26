@@ -1,4 +1,4 @@
-
+package packsack;
 
 import packsack.io.FileInput;
 import java.text.DecimalFormat;
@@ -10,7 +10,7 @@ import packsack.huffman.Huffman;
  */
 public class Main {
     
-    private static DecimalFormat df2 = new DecimalFormat("#.##");
+    private static final DecimalFormat df2 = new DecimalFormat("#.##");
     
     /**
      * @param args the command line arguments
