@@ -10,7 +10,7 @@ import packsack.huffman.Huffman;
  */
 public class Main {
     
-    private static final DecimalFormat df2 = new DecimalFormat("#.##");
+    private static final DecimalFormat DFORMAT = new DecimalFormat("#.##");
     
     /**
      * @param args the command line arguments
@@ -19,9 +19,9 @@ public class Main {
         try {
             String todo = args[0];
             String filePath = args[1];
+            Huffman huff = new Huffman();
             if (todo.equals("-co")) {
-                Huffman huff = new Huffman();
-                
+
                 long startTime = System.currentTimeMillis();
                 double sizeAtStart = (double) huff.compress(filePath);
                 long endTime = System.currentTimeMillis();
@@ -30,16 +30,10 @@ public class Main {
                 FileInput file = new FileInput(filePath + ".sebbe");
                 double sizeAtEnd = (double) file.size();
                 file.close();
+                printStatistics(endTime, startTime, sizeAtStart, sizeAtEnd);
                 
-                System.out.println("Time to compress: "  + (endTime - startTime) + " ms");
-                System.out.println("Size of original file: " + sizeAtStart + " Bytes");
-                System.out.println("Size of compressed file: " + sizeAtEnd + " Bytes");
-                System.out.println("Total compression ratio: " + df2.format(sizeAtStart / sizeAtEnd));
-                System.out.println("Space saved: " + df2.format((1-(sizeAtEnd/sizeAtStart))*100) + " %");
             } else if (todo.equals("-de")) {
                 String outputPath = args[2];
-                
-                Huffman huff = new Huffman();
                 
                 long startTime = System.currentTimeMillis();
                 huff.decompress(filePath, outputPath);
@@ -54,6 +48,14 @@ public class Main {
             System.out.println("Valid arguments are:");
             System.out.println("-co <file> & -de <fileInput> <fileOutput>");
         }
+    }
+    
+    public static void printStatistics(long endTime, long startTime, double sizeAtStart, double sizeAtEnd) {
+        System.out.println("Time to compress: "  + (endTime - startTime) + " ms");
+        System.out.println("Size of original file: " + sizeAtStart + " Bytes");
+        System.out.println("Size of compressed file: " + sizeAtEnd + " Bytes");
+        System.out.println("Total compression ratio: " + DFORMAT.format(sizeAtStart / sizeAtEnd));
+        System.out.println("Space saved: " + DFORMAT.format((1 - (sizeAtEnd / sizeAtStart)) * 100) + " %");
     }
 
 }

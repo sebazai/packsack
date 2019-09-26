@@ -29,6 +29,7 @@ public class Huffman {
     /**
      * Huffman compress
      * @param filePath Path to file to compress
+     * @return size of file to be compressed, for performance testing
      */
     public int compress(String filePath) {
         FileInput stream = new FileInput(filePath);
