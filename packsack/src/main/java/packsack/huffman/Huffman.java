@@ -28,7 +28,7 @@ public class Huffman {
     
     /**
      * Huffman compress
-     * @param filePath Uncompressed file path
+     * @param filePath Path to file to compress
      */
     public int compress(String filePath) {
         FileInput stream = new FileInput(filePath);
@@ -90,7 +90,7 @@ public class Huffman {
     
     /**
      * Write HuffTree recursively to binary string.
-     * @param node root node
+     * @param node start at root node
      */
     public void writeTree(HuffNode node) {
         if (node.isLeaf()) {
@@ -104,7 +104,8 @@ public class Huffman {
     }
     
     /**
-     * Converts the treeAsBinary String to an array of bytes for writing to the output
+     * Converts the treeAsBinary String to an array of bytes to write in the output stream.
+     * Makes sure the string is divisible with 8 and with substring(0, 8) cut the string to 8-bits/byte.
      * @return array of bytes
      */
     public byte[] convertTreeBinaryStringToBytes() {
@@ -120,7 +121,8 @@ public class Huffman {
     }
     
     /**
-     * Reads file and writes the encoded data.
+     * Reads the original file to be compressed and writes the encoded data using the encoding table.
+     * 
      * @param inputStream file input stream
      * @param outputStream file output stream
      * @param encodingTable Encoding table generated from hufftree
@@ -148,7 +150,8 @@ public class Huffman {
     }
     
     /**
-     * Decompress a Huffman compressed file by reading original file size, building the tree and finally writing out the data using this tree.
+     * Decompress a Huffman compressed file by reading original file size from first 4 bytes, building the tree from the header and finally writing out the data to original for using this generated tree.
+     * 
      * @param inputFilePath File to be decompressed
      * @param outputFilePath File to save
      */
@@ -176,6 +179,7 @@ public class Huffman {
     
     /**
      * Decode the compressed data recursively
+     * Using the generated tree from the decompressed file
      * @param node
      * @param stream
      * @return 
@@ -199,7 +203,8 @@ public class Huffman {
     }
     
     /**
-     * Build the tree from compressed file recursively
+     * Build the hufftree from compressed file header recursively
+     * Reads the bytes from the compressed file to a string.
      * @param stream
      * @return root node
      */

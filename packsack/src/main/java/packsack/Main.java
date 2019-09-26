@@ -1,7 +1,8 @@
-package packsack.huffman;
+
 
 import packsack.io.FileInput;
 import java.text.DecimalFormat;
+import packsack.huffman.Huffman;
 
 /**
  * Main.java
