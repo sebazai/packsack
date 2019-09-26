@@ -20,19 +20,27 @@ import org.junit.Test;
  */
 public class HuffmanTest {
     String testfile = getClass().getClassLoader().getResource("hufftreetestfile").getPath();
+    String testfileTwo = getClass().getClassLoader().getResource("abracadabratest.txt").getPath();
     Huffman huffman; 
+    Huffman huffmanTwo;
     byte[] compressedBytes;
+    byte[] compressedBytesTwo;
             
     @Before
     public void setUp() throws IOException {
-        Huffman huffman = new Huffman();
+        huffman = new Huffman();
         huffman.compress(testfile);
         String compressed = testfile.concat(".sebbe");
         compressedBytes = Files.readAllBytes(Paths.get(compressed));
+        
+        huffmanTwo = new Huffman();
+        huffmanTwo.compress(testfileTwo);
+        String compressedTwo = testfileTwo.concat(".sebbe");
+        compressedBytesTwo = Files.readAllBytes(Paths.get(compressedTwo));
     }
     
     @Test
-    public void FileSizeCorrectInCompressedFile() {
+    public void fileSizeCorrectInCompressedFile() {
         byte[] sizeIsCorrect = {0,0,0,14};
         assertEquals(sizeIsCorrect[3], compressedBytes[3]);
     }
@@ -47,6 +55,54 @@ public class HuffmanTest {
             }
         }
         assertTrue(isTrue);
+    }
+    
+    @Test
+    public void testFileTwoHeaderSizeIsCorrect() {
+        byte[] sizeIsCorrect = {0,0,0,12};
+        boolean isTrue = true;
+        for (int i = 0; i < 3; i++) {
+            if (sizeIsCorrect[i] != compressedBytesTwo[i]) {
+                isTrue = false;
+            }
+        }
+        assertTrue(isTrue);
+    }
+    
+    @Test
+    public void testFileTwoTreeIsCorrect() {
+        byte[] treeShouldBe = {80, 74, 34, 67, 67, 84, -88, 64};
+        boolean isTrue = true;
+        for (int i = 0; i < treeShouldBe.length; i++) {
+            if (treeShouldBe[i] != compressedBytesTwo[i+4]) {
+                isTrue = false;
+            }
+        }
+        assertTrue(isTrue);
+    }
+    
+    @Test
+    public void testFileTwoCorrectDataAfterTree() {
+        byte[] dataShouldBe = {124, -76, 124, -96};
+        boolean isTrue = true;
+        for (int i = 0; i < dataShouldBe.length; i++) {
+            if (dataShouldBe[i] != compressedBytesTwo[i+12]) {
+                isTrue = false;
+            }
+        }
+        assertTrue(isTrue);
+    }
+    
+    @Test
+    public void decompressFileTwoReturnsCorrectData() throws IOException {
+        String inputPath = getClass().getClassLoader().getResource("compressedFile").getPath();
+        String outputPath = inputPath.concat(".txt");
+        
+        huffman.decompress(inputPath, outputPath);
+        
+        byte[] bytes = Files.readAllBytes(Paths.get(outputPath));
+        String data = new String(bytes);
+        assertEquals("ABRACADABRA!", data);
     }
     
 }
