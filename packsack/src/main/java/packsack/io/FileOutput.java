@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package huffman.io;
+package packsack.io;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import huffman.util.ByteStringManipulator;
+import packsack.util.ByteStringManipulator;
 /**
  *
  * @author sebserge

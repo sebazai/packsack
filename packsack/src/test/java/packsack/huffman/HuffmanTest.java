@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package huffman.huffman;
+package packsack.huffman;
 
-import huffman.huffman.Huffman;
+import packsack.huffman.Huffman;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;

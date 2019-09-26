@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package huffman.huffman;
-import huffman.io.FileInput;
-import huffman.io.FileOutput;
-import huffman.util.ByteStringManipulator;
-import huffman.util.HuffNode;
-import huffman.util.HuffTree;
+package packsack.huffman;
+import packsack.io.FileInput;
+import packsack.io.FileOutput;
+import packsack.util.ByteStringManipulator;
+import packsack.util.HuffNode;
+import packsack.util.HuffTree;
 
 /**
  * Huffman compress and decompress class

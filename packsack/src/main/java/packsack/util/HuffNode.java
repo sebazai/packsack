@@ -1,4 +1,4 @@
-package huffman.util;
+package packsack.util;
 
 /**
  * Node for the Huffman Tree.
