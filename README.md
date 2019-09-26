@@ -4,8 +4,9 @@ Pakkausohjelma, joka toteutetaan Javalla käyttäen Huffmanin algoritmia. Tietor
 
 ###  Dokumentaatio
 
-* [Määrittelydokumentti](https://github.com/sebazai/packsack/blob/master/documentation/maarittelydokumentti.md)
-* [Toteutusdokumentti](https://github.com/sebazai/packsack/blob/master/documentation/toteutus.md)
+* [Määrittelydokumentaatio](https://github.com/sebazai/packsack/blob/master/documentation/maarittelydokumentti.md)
+* [Toteutusdokumentaatio](https://github.com/sebazai/packsack/blob/master/documentation/toteutus.md)
+* [Testausdokumentaatio](https://github.com/sebazai/packsack/blob/master/documentation/testaus.md)
 
 ### Viikkoraportit
 
