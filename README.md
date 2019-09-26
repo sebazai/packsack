@@ -5,7 +5,7 @@ Pakkausohjelma, joka toteutetaan Javalla käyttäen Huffmanin algoritmia. Tietor
 ###  Dokumentaatio
 
 * [Määrittelydokumentti](https://github.com/sebazai/packsack/blob/master/documentation/maarittelydokumentti.md)
-
+* [Toteutusdokumentti](https://github.com/sebazai/packsack/blob/master/documentation/toteutus.md)
 
 ### Viikkoraportit
 
@@ -41,9 +41,10 @@ JAR tiedosto luodaan automaattisesti /target/ kansioon, voit ajaa tiedostoa seur
 java -jar packsack-1.0-SNAPSHOT.jar [argumentit]
 ```
 
-Hyväksyttävät argumentit ovat: 
+##### Hyväksyttävät argumentit ovat: 
 
 * [-co *tiedoston-nimi*]
 * [-de *purettava-tiedosto* *puretaan-tänne-nimellä*]
 
 Missä -co pakkaa tiedoston käyttäen Huffmanin ja -de purkaa tiedoston joka on pakattu ja kirjoittaa sen ulos haluamaansa paikkaan. 
+
