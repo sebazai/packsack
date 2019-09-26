@@ -1,4 +1,4 @@
-# Viikko 3
+# Viikko 4
 
 Aikaa käytetty, n. 10h
 
@@ -8,12 +8,12 @@ Tehnyt testejä Huffman pakkaus- ja purkausluokalle. Refaktoroinut koodia, kirjo
 
 ### Miten ohjelma on edistynyt?
 
-Ohjelmasta puuttuu edelleen omien tietorakenteiden toteutus, mutta muuten ohjelma on hyvällä mallilla.
+Ohjelmasta puuttuu edelleen omien tietorakenteiden toteutus, mutta muuten ohjelma on hyvällä mallilla. Hidas pakkaamaan jo 20 megatavun tiedostoja.
 
 ### Haasteita
 
-Hitaus on ihmetyttänyt, kun 20 megatavun tiedosto kestää 1,5 min pakata, mutta selvästi koska käsittelen näitä stringeillä, niin se tuottaa hitautta. [Tämän](https://javapapers.com/java/java-string-vs-stringbuilder-vs-stringbuffer-concatenation-performance-micro-benchmark/) mukaan StringBuilder olisi paras vaihtoehto, mutta sit taas voisi stringeistä koittaa päästä eroon, mikäli aika riittää.
+Hitaus on ihmetyttänyt, kun 20 megatavun tiedosto kestää 1,5 min pakata, mutta selvästi koska käsittelen näitä stringeillä ja stringin concat metodilla, niin se tuottaa hitautta. [Tämän](https://javapapers.com/java/java-string-vs-stringbuilder-vs-stringbuffer-concatenation-performance-micro-benchmark/) mukaan StringBuilder olisi paras vaihtoehto, mutta sit taas voisi stringeistä koittaa päästä eroon.
 
 ### Seuraavaksi
 
-PriorityQueuen jatkaminen, dokumentaation kirjoittaminen. Ainaki alustavasti StringBuilderin käyttö.
+PriorityQueuen jatkaminen, dokumentaation kirjoittaminen. Ainaki alustavasti StringBuilderin käyttö ja tutustuminen streamil kirjoittamista binäärejä.
