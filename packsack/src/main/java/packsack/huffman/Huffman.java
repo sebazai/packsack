@@ -173,6 +173,7 @@ public class Huffman {
             whereToWrite++;
 //            outputStream.writeToOutputFile(encodedString);
         }
+        
         byte[] finalArray = new byte[whereToWrite];
         for (int i = 0; i < whereToWrite; i++) {
             finalArray[i] = arrayToWrite[i];
