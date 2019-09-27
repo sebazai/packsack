@@ -5,15 +5,8 @@
  */
 package packsack.io;
 
-import packsack.io.FileInput;
-import packsack.io.FileOutput;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import packsack.util.ByteStringManipulator;
 
 /**
  *
@@ -50,7 +43,7 @@ public class FileOutputTest {
         FileOutput stream = new FileOutput(testfile, false);
         FileInput inputStream = new FileInput(testfile + ".sebbe");
         
-        stream.writeToOutputFile("01100010", new ByteStringManipulator());
+        stream.writeToOutputFile("01100010");
         assertEquals((byte) (char) 'b', inputStream.nextInt());
         stream.close();
         inputStream.close();

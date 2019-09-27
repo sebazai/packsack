@@ -6,7 +6,9 @@
 package packsack.io;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.nio.channels.FileChannel;
 import java.io.IOException;
+import java.nio.ByteBuffer;
 import packsack.util.ByteStringManipulator;
 /**
  *
@@ -14,7 +16,9 @@ import packsack.util.ByteStringManipulator;
  */
 public class FileOutput {
     FileOutputStream stream;
-    
+    ByteStringManipulator manipulator;
+    FileChannel fChan;
+    ByteBuffer buff;
     /**
      * Output stream for file bytes.
      * @param path Path where to output
@@ -26,6 +30,9 @@ public class FileOutput {
         }
         try {
             stream = new FileOutputStream(path);
+            manipulator = new ByteStringManipulator();
+            fChan = stream.getChannel();
+            buff = ByteBuffer.allocateDirect(32 * 1024);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -58,11 +65,15 @@ public class FileOutput {
     /**
      * Writes in 8 bit sequence from the encoded binary string.
      * @param toWrite Encoded binary string
-     * @param manipulator String and byte manipulator
-     * @param outputStream File output
      * @return The bits that left in the string
      */
-    public String writeToOutputFile(String toWrite, ByteStringManipulator manipulator) {
+//    public String writeToOutputFile(String toWrite) {
+//        byte[] arrayToWrite = new byte[256];
+//        while (toWrite.length() >= 8) {
+//            buff.put(manipulator.stringToByte(toWrite.substring(0, 8)));
+//        }
+//    }
+    public String writeToOutputFile(String toWrite) {
         while (toWrite.length() >= 8) {
             this.write(manipulator.stringToByte(toWrite.substring(0, 8)));
             toWrite = toWrite.substring(8);

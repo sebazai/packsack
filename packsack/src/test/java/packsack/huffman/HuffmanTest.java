@@ -87,6 +87,7 @@ public class HuffmanTest {
         boolean isTrue = true;
         for (int i = 0; i < dataShouldBe.length; i++) {
             if (dataShouldBe[i] != compressedBytesTwo[i+12]) {
+                
                 isTrue = false;
             }
         }

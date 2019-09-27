@@ -9,6 +9,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
  * Input stream for file bytes.
@@ -37,6 +39,17 @@ public class FileInput {
             ex.printStackTrace();
         }
         return -1;
+    }
+    
+    public byte[] readAllBytes() {
+        byte[] fileBytes;
+        try {
+            fileBytes = Files.readAllBytes(Paths.get(this.path));
+        } catch (IOException e) {
+            fileBytes = new byte[0];
+            e.printStackTrace();
+        }
+        return fileBytes;
     }
     
     /**

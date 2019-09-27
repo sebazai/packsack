@@ -21,7 +21,6 @@ public class HuffTree {
     public void buildHuffTree(int[] occurrence) {
         PriorityQueue<HuffNode> huffTree = new PriorityQueue<>();
         for (char i = 0; i < 256; i++) {
-            // Convert unsigned int to signed'
             if (occurrence[i] != 0) { 
                 huffTree.add(new HuffNode((char) (byte) i, occurrence[i], null, null));
             }
