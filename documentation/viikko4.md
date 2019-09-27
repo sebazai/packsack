@@ -1,6 +1,6 @@
 # Viikko 4
 
-Aikaa käytetty, n. 10h
+Aikaa käytetty, n. 15h
 
 ### Mitä olen tehnyt tällä viikolla?
 
