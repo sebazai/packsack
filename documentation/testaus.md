@@ -9,6 +9,8 @@ Testit on suoritettu Lenovo T480 läppärillä, jossa on muistia 16 Gigatavua ja
 
 Jokaista tiedostoa kohden on suoritettu 5 testiä, joista laskettu keskiarvo ajalle.
 
+Testit suoritetaan kun oma tietorakenne PriorityQueuesta tehty ja purkaus on muutettu suoriutumaan muistissa.
+
 | Tiedosto     |       Koko | Pakattu koko | Tilaa säästetty  | Pakkausaika | Purkausaika   |
 | -----------  | ---------: | -----------: | ---------------- | ----------: | ------------: |
 | alice29.txt  |   152 089B |              |                  |             |               |
