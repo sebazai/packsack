@@ -192,7 +192,8 @@ public class Huffman {
 //    }
     
     /**
-     * Decompress a Huffman compressed file by reading original file size from first 4 bytes, building the tree from the header and finally writing out the data to original for using this generated tree.
+     * Decompress a Huffman compressed file by reading original file size from first 4 bytes, 
+     * building the tree from the header and finally writing out the data to original for using this generated tree.
      * 
      * @param inputFilePath File to be decompressed
      * @param outputFilePath File to save
@@ -206,14 +207,16 @@ public class Huffman {
         treeAsBinary = "";
         
         int fileSize = inputstream.readFileSize();
-        
+
         treeAsBinary = manipulator.byteToString(inputstream.nextInt());
         HuffNode rootnode = this.decodeTree(inputstream);
+        byte[] dataToWrite = new byte[fileSize];
         
         for (int i = 0; i < fileSize; i++) {
-            byte dataToWrite = decodeData(rootnode, inputstream);
-            outputstream.write(dataToWrite);
+            dataToWrite[i] = decodeData(rootnode, inputstream);
         }
+        
+        outputstream.writeArray(dataToWrite);
         outputstream.close();
         inputstream.close();
     }
