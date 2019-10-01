@@ -19,7 +19,7 @@ public class HuffTree {
      * @param occurrence array containing the amount of occurrence of bytes.
      */
     public void buildHuffTree(int[] occurrence) {
-        PriorityQueue<HuffNode> huffTree = new PriorityQueue<>();
+        MinHeap<HuffNode> huffTree = new MinHeap<>();
         for (char i = 0; i < 256; i++) {
             if (occurrence[i] != 0) { 
                 huffTree.add(new HuffNode((char) (byte) i, occurrence[i], null, null));

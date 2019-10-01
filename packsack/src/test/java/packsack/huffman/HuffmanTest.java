@@ -71,7 +71,7 @@ public class HuffmanTest {
     
     @Test
     public void testFileTwoTreeIsCorrect() {
-        byte[] treeShouldBe = {80, 74, 34, 67, 67, 84, -88, 64};
+        byte[] treeShouldBe = {80, 74, 34, 67, 67, 80, -86, 64};
         boolean isTrue = true;
         for (int i = 0; i < treeShouldBe.length; i++) {
             if (treeShouldBe[i] != compressedBytesTwo[i+4]) {
@@ -83,7 +83,7 @@ public class HuffmanTest {
     
     @Test
     public void testFileTwoCorrectDataAfterTree() {
-        byte[] dataShouldBe = {124, -76, 124, -96};
+        byte[] dataShouldBe = {110, -76, 110, -96};
         boolean isTrue = true;
         for (int i = 0; i < dataShouldBe.length; i++) {
             if (dataShouldBe[i] != compressedBytesTwo[i+12]) {
