@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 package packsack.huffman;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import packsack.io.FileInput;
 import packsack.io.FileOutput;
 import packsack.util.ByteStringManipulator;
@@ -36,12 +34,14 @@ public class Huffman {
     public int compress(String filePath) {
         FileInput stream = new FileInput(filePath);
         int sizeOfFile = stream.size();
+        
         int[] occurrences = new int[256];
+        // Read all bytes to memory
         byte[] allFileBytes = stream.readAllBytes();
-        this.calculateOccurrencesOfCharacters(occurrences, allFileBytes);
-//        this.calculateOccurrencesOfCharacters(occurrences, stream);
         stream.close();
         
+        this.calculateOccurrencesOfCharacters(occurrences, allFileBytes);
+
         this.tree.buildHuffTree(occurrences);
         HuffNode rootnode = this.tree.getRoot();
         
@@ -58,11 +58,9 @@ public class Huffman {
         
         outputStream.writeArray(fileSize);
         outputStream.writeArray(treeAsBytes);
-//        writeEncodedData(inputStream, outputStream, codeTable);
+
         writeEncodedData(allFileBytes, outputStream, codeTable);
-               
-//        outputStream.writeArray(this.writeEncodedDataToOutput(encodedString));
-        
+
         inputStream.close();
         outputStream.close();
         return sizeOfFile;
@@ -74,10 +72,6 @@ public class Huffman {
      * @param stream Input file stream
      */
     public void calculateOccurrencesOfCharacters(int[] occurrences, byte[] stream) {
-//        int nextInt;
-//        while ((nextInt = stream.nextInt()) >= 0) {
-//            occurrences[manipulator.toUnsignedInt(nextInt)]++;
-//        }
         for (int i = 0; i < stream.length; i++) {
             occurrences[manipulator.toUnsignedInt(stream[i])]++;
         }
@@ -106,16 +100,16 @@ public class Huffman {
      */
     public String writeTree(HuffNode node, StringBuilder builder) {
         if (node.isLeaf()) {
-//            treeAsBinary += "1";
             builder.append("1");
-//            treeAsBinary += manipulator.byteToString(node.getCharacter());
             builder.append(manipulator.byteToString(node.getCharacter()));
             return builder.toString();
         }
-//        treeAsBinary += "0";
+        
         builder.append("0");
+        
         writeTree(node.getLeftNode(), builder);
         writeTree(node.getRightNode(), builder);
+        
         return builder.toString();
     }
     
@@ -140,25 +134,22 @@ public class Huffman {
     /**
      * Reads the original file to be compressed and writes the encoded data using the encoding table.
      * 
-     * @param inputStream file input stream
+     * @param fileBytes Original file data as array in memory
      * @param outputStream file output stream
      * @param encodingTable Encoding table generated from hufftree
      */
-    public void writeEncodedData(/*FileInput inputStream*/byte[] fileBytes, FileOutput outputStream, String[] encodingTable) {
+    public void writeEncodedData(byte[] fileBytes, FileOutput outputStream, String[] encodingTable) {
         String encodedString = "";
         byte[] arrayToWrite = new byte[fileBytes.length];
         int whereToWrite = 0;
         for (int i = 0; i < fileBytes.length; i++) {
-//        for (int i = inputStream.nextInt(); i != -1; i = inputStream.nextInt()) {
             int unSigned = manipulator.toUnsignedInt(fileBytes[i]);
             if (encodingTable[unSigned] == null) {
                 break;
             } else {
                 encodedString += encodingTable[unSigned];
             }
-//            if (encodedString.length() >= 8) {
-//                encodedString = outputStream.writeToOutputFile(encodedString);
-//            }
+
             if (encodedString.length() >= 8) {
                arrayToWrite[whereToWrite] = this.manipulator.stringToByte(encodedString.substring(0, 8));
                encodedString = encodedString.substring(8);
@@ -171,7 +162,6 @@ public class Huffman {
             }
             arrayToWrite[whereToWrite] = this.manipulator.stringToByte(encodedString.substring(0, 8));
             whereToWrite++;
-//            outputStream.writeToOutputFile(encodedString);
         }
         
         byte[] finalArray = new byte[whereToWrite];
