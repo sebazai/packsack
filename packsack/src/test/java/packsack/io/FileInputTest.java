@@ -5,6 +5,7 @@
  */
 package packsack.io;
 
+import java.io.IOException;
 import packsack.io.FileInput;
 import org.junit.Before;
 import org.junit.Test;
@@ -34,8 +35,12 @@ public class FileInputTest {
     
     @Test
     public void streamClosesCorrectly() {
-        stream.close();
-        assertEquals(-1, stream.nextInt());
+        try {
+            stream.close();
+            stream.nextInt();
+        } catch (Exception e) {
+            assertTrue(e.getClass().equals(IOException.class));
+        }
     }
     
     @Test

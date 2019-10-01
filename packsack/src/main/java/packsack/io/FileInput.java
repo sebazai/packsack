@@ -36,7 +36,7 @@ public class FileInput {
         try {
             return stream.read();
         } catch (IOException ex) {
-            ex.printStackTrace();
+//            ex.printStackTrace();
         }
         return -1;
     }

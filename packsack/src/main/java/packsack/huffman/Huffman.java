@@ -171,16 +171,6 @@ public class Huffman {
         outputStream.writeArray(finalArray);
     }
     
-//    public byte[] writeEncodedDataToOutput(String encodedString) {
-//        byte[] arrayToWrite = new byte[(encodedString.length() / 8)];
-//        int inArray = 0;
-//        for (int i = 0; i < encodedString.length()-8; i += 8) {
-//            arrayToWrite[inArray] = this.manipulator.stringToByte(encodedString.substring(i, i+8));
-//            inArray++;
-//        }
-//        return arrayToWrite;
-//    }
-    
     /**
      * Decompress a Huffman compressed file by reading original file size from first 4 bytes, 
      * building the tree from the header and finally writing out the data to original for using this generated tree.

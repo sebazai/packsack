@@ -46,7 +46,7 @@ public class FileOutput {
         try {
             stream.write(i);
         } catch (IOException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
     }
     
@@ -67,12 +67,6 @@ public class FileOutput {
      * @param toWrite Encoded binary string
      * @return The bits that left in the string
      */
-//    public String writeToOutputFile(String toWrite) {
-//        byte[] arrayToWrite = new byte[256];
-//        while (toWrite.length() >= 8) {
-//            buff.put(manipulator.stringToByte(toWrite.substring(0, 8)));
-//        }
-//    }
     public String writeToOutputFile(String toWrite) {
         while (toWrite.length() >= 8) {
             this.write(manipulator.stringToByte(toWrite.substring(0, 8)));
