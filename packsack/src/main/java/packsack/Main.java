@@ -39,7 +39,7 @@ public class Main {
                 huff.decompress(filePath, outputPath);
                 long endTime = System.currentTimeMillis();
                 
-                System.out.println("Time to decompress: " + (endTime - startTime));
+                System.out.println("Time to decompress: " + (endTime - startTime) + " ms");
             } else {
                 throw new Exception();
             }
