@@ -12,7 +12,7 @@ Jokaista tiedostoa kohden on suoritettu 5 testiä, joista laskettu keskiarvo aja
 Testit suoritetaan kun oma tietorakenne PriorityQueuesta tehty ja purkaus on muutettu suoriutumaan muistissa.
 
 | Tiedosto     |       Koko | Pakattu koko | Tilaa säästetty  | Pakkausaika | Purkausaika   | Koko Ubuntun .tar.gz |
-| -----------  | ---------: | -----------: | ---------------- | ----------: | ------------: | --------------------;|
+| -----------  | ---------: | -----------: | ----------------:| ----------: | ------------: | --------------------:|
 | alice29.txt  |   152 089B |     87 684B  |          42.28 % |      78 ms  |               |                      |
 | asyoulik.txt |   125 179B |     75 895B  |          39.37 % |      72 ms  |               |                      |
 | bible.txt    | 4 047 392B |  2 218 533B  |          45.19 % |     401 ms  |               |                      |
