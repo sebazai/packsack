@@ -12,19 +12,19 @@ Jokaista tiedostoa kohden on suoritettu 5 testiä, joista laskettu keskiarvo aja
 Testit suoritetaan kun oma tietorakenne PriorityQueuesta tehty ja purkaus on muutettu suoriutumaan muistissa.
 
 | Tiedosto     |       Koko | Pakattu koko | Tilaa säästetty  | Pakkausaika | Purkausaika   | .tar.gz |
-| -----------  | ---------: | -----------: | ----------------:| ----------: | ------------: | -------:|
-| alice29.txt  |   152 089B |     87 684B  |          42.28 % |      78 ms  |               |         |
-| asyoulik.txt |   125 179B |     75 895B  |          39.37 % |      72 ms  |               |         |
-| bible.txt    | 4 047 392B |  2 218 533B  |          45.19 % |     401 ms  |               |         |
-| cp.html      |    24 603B |     16 311B  |          33.70 % |      38 ms  |               |         |
-| fields.c     |    11 150B |              |                  |             |               |         |
-| E.coli       | 4 638 690B |              |                  |             |               |         |
-| grammar.lsp  |     3 721B |              |                  |             |               |         |
-| kennedy.xls  | 1 029 744B |              |                  |             |               |         |
-| lcet10.txt   |   426 754B |              |                  |             |               |         |
-| plrabn12.txt |   481 861B |              |                  |             |               |         |
-| ptt5         |   513 216B |              |                  |             |               |         |
-| sum          |     38240B |              |                  |             |               |         |
-| world192.txt | 2 473 400B |              |                  |             |               |         |
-| xargs.1      |      4227B |              |                  |             |               |         |
+| -----------  | ---------: | -----------: | ------------:| ----------: | ------------: | -------:|
+| alice29.txt  |   152 089B |     87 684B  |      42.28 % |      78 ms  |               |         |
+| asyoulik.txt |   125 179B |     75 895B  |      39.37 % |      72 ms  |               |         |
+| bible.txt    | 4 047 392B |  2 218 533B  |      45.19 % |     401 ms  |               |         |
+| cp.html      |    24 603B |     16 311B  |      33.70 % |      38 ms  |               |         |
+| fields.c     |    11 150B |      7 143B  |      35.94 % |      27 ms  |               |         |
+| E.coli       | 4 638 690B |  1 159 682B  |      75.00 % |     317 ms  |               |         |
+| grammar.lsp  |     3 721B |      2 281B  |      38.70 % |      22 ms  |               |         |
+| kennedy.xls  | 1 029 744B |    462 856B  |      55.05 % |     161 ms  |               |         |
+| lcet10.txt   |   426 754B |    250 673B  |      41.26 % |     125 ms  |               |         |
+| plrabn12.txt |   481 861B |    275 688B  |      42.79 % |     129 ms  |               |         |
+| ptt5         |   513 216B |    106 754B  |      79.20 % |     125 ms  |               |         |
+| sum          |    38 240B |     26 116B  |      31.71 % |      52 ms  |               |         |
+| world192.txt | 2 473 400B |  1 558 717B  |      36.98 % |     317 ms  |               |         |
+| xargs.1      |     4 227B |      2 714B  |      35.79 % |      20 ms  |               |         |
 
