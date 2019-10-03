@@ -16,24 +16,24 @@ import packsack.util.ByteStringManipulator;
  */
 public class HuffmanDecompress {
     
-        private String treeAsBinary;
-        private String dataToDecode;
-        private final ByteStringManipulator manipulator;
+    private String treeAsBinary;
+    private String dataToDecode;
+    private final ByteStringManipulator manipulator;
         
-        public HuffmanDecompress() {
-            treeAsBinary = "";
-            dataToDecode = "";
-            manipulator = new ByteStringManipulator();
-        }
+    public HuffmanDecompress() {
+        treeAsBinary = "";
+        dataToDecode = "";
+        manipulator = new ByteStringManipulator();
+    }
         
-        public void decompress(String inputFilePath, String outputFilePath) {
+    public void decompress(String inputFilePath, String outputFilePath) {
         FileInput inputstream = new FileInput(inputFilePath);
         FileOutput outputstream = new FileOutput(outputFilePath, true);
         
         // Make sure the Strings are empty.
         dataToDecode = "";
         treeAsBinary = "";
-        
+    
         int fileSize = inputstream.readFileSize();
 
         treeAsBinary = manipulator.byteToString(inputstream.nextInt());

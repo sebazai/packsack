@@ -60,7 +60,7 @@ public class MinHeap<HuffNode extends Comparable<HuffNode>> {
             swap(1, 2);
         }
         while (2 * i + 1 <= size) {
-            int nodeChild= 2 * i;
+            int nodeChild = 2 * i;
             if (heap[2 * i].compareTo(heap[2 * i + 1]) >= 0) {
                 nodeChild++;
             }

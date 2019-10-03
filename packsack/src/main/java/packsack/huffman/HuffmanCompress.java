@@ -151,9 +151,9 @@ public class HuffmanCompress {
             }
 
             if (encodedString.length() >= 8) {
-               arrayToWrite[whereToWrite] = this.manipulator.stringToByte(encodedString.substring(0, 8));
-               encodedString = encodedString.substring(8);
-               whereToWrite++;
+                arrayToWrite[whereToWrite] = this.manipulator.stringToByte(encodedString.substring(0, 8));
+                encodedString = encodedString.substring(8);
+                whereToWrite++;
             }
         }
         if (encodedString.length() % 8 != 0) {

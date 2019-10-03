@@ -37,7 +37,7 @@
 
         <!--- Naming Conventions -->
 
-        <module name='ClassTypeParameterName' />
+	<!--<module name='ClassTypeParameterName' />-->
         <module name='ConstantName' />
         <module name='LocalFinalVariableName' />
         <module name='LocalVariableName' />
