@@ -5,7 +5,7 @@
  */
 package packsack.huffman;
 
-import packsack.huffman.Huffman;
+import packsack.huffman.HuffmanCompress;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -21,19 +21,19 @@ import org.junit.Test;
 public class HuffmanTest {
     String testfile = getClass().getClassLoader().getResource("hufftreetestfile").getPath();
     String testfileTwo = getClass().getClassLoader().getResource("abracadabratest.txt").getPath();
-    Huffman huffman; 
-    Huffman huffmanTwo;
+    HuffmanCompress huffman; 
+    HuffmanCompress huffmanTwo;
     byte[] compressedBytes;
     byte[] compressedBytesTwo;
             
     @Before
     public void setUp() throws IOException {
-        huffman = new Huffman();
+        huffman = new HuffmanCompress();
         huffman.compress(testfile);
         String compressed = testfile.concat(".sebbe");
         compressedBytes = Files.readAllBytes(Paths.get(compressed));
         
-        huffmanTwo = new Huffman();
+        huffmanTwo = new HuffmanCompress();
         huffmanTwo.compress(testfileTwo);
         String compressedTwo = testfileTwo.concat(".sebbe");
         compressedBytesTwo = Files.readAllBytes(Paths.get(compressedTwo));

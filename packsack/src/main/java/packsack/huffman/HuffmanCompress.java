@@ -11,15 +11,15 @@ import packsack.util.HuffNode;
 import packsack.util.HuffTree;
 
 /**
- * Huffman compress and decompress class
+ * HuffmanCompress compress and decompress class
  * @author sebserge
  */
-public class Huffman {
+public class HuffmanCompress {
     private final HuffTree tree;
     private String treeAsBinary;
     private String dataToDecode;
     private final ByteStringManipulator manipulator;
-    public Huffman() {
+    public HuffmanCompress() {
         this.tree = new HuffTree();
         this.treeAsBinary = "";
         this.dataToDecode = "";
@@ -27,7 +27,7 @@ public class Huffman {
     }
     
     /**
-     * Huffman compress
+     * HuffmanCompress compress
      * @param filePath Path to file to compress
      * @return size of file to be compressed, for performance testing
      */

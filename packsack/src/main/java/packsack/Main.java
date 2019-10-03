@@ -2,7 +2,7 @@ package packsack;
 
 import packsack.io.FileInput;
 import java.text.DecimalFormat;
-import packsack.huffman.Huffman;
+import packsack.huffman.HuffmanCompress;
 import packsack.huffman.HuffmanDecompress;
 
 /**
@@ -20,7 +20,7 @@ public class Main {
         try {
             String todo = args[0];
             String filePath = args[1];
-            Huffman huff = new Huffman();
+            HuffmanCompress huff = new HuffmanCompress();
             if (todo.equals("-co")) {
 
                 long startTime = System.currentTimeMillis();
