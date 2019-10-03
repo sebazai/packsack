@@ -94,16 +94,4 @@ public class HuffmanTest {
         assertTrue(isTrue);
     }
     
-    @Test
-    public void decompressFileTwoReturnsCorrectData() throws IOException {
-        String inputPath = getClass().getClassLoader().getResource("compressedFile").getPath();
-        String outputPath = inputPath.concat(".txt");
-        
-        huffman.decompress(inputPath, outputPath);
-        
-        byte[] bytes = Files.readAllBytes(Paths.get(outputPath));
-        String data = new String(bytes);
-        assertEquals("ABRACADABRA!", data);
-    }
-    
 }

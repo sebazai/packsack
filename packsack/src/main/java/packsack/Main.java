@@ -3,6 +3,7 @@ package packsack;
 import packsack.io.FileInput;
 import java.text.DecimalFormat;
 import packsack.huffman.Huffman;
+import packsack.huffman.HuffmanDecompress;
 
 /**
  * Main.java
@@ -35,8 +36,10 @@ public class Main {
             } else if (todo.equals("-de")) {
                 String outputPath = args[2];
                 
+                HuffmanDecompress huffdecomp = new HuffmanDecompress();
+                
                 long startTime = System.currentTimeMillis();
-                huff.decompress(filePath, outputPath);
+                huffdecomp.decompress(filePath, outputPath);
                 long endTime = System.currentTimeMillis();
                 
                 System.out.println("Time to decompress: " + (endTime - startTime) + " ms");
