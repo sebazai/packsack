@@ -26,6 +26,10 @@
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.0</version>
                 <configuration>
+                    <excludes>
+                        <exclude>packsack/ui/**/*</exclude>
+                        <exclude>**/Main.*</exclude>
+                    </excludes>
                 </configuration>
                 <executions>
                     <execution>
