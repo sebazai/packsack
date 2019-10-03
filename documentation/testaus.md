@@ -13,10 +13,10 @@ Testit suoritetaan kun oma tietorakenne PriorityQueuesta tehty ja purkaus on muu
 
 | Tiedosto     |       Koko | Pakattu koko | Tilaa säästetty  | Pakkausaika | Purkausaika   | Koko Ubuntun .tar.gz |
 | -----------  | ---------: | -----------: | ---------------- | ----------: | ------------: | --------------------;|
-| alice29.txt  |   152 089B |              |                  |             |               |                      |
-| asyoulik.txt |   125 179B |              |                  |             |               |                      |
-| bible.txt    | 4 047 392B |              |                  |             |               |                      |
-| cp.html      |    24 603B |              |                  |             |               |                      |
+| alice29.txt  |   152 089B |     87 684B  |          42.28 % |      78 ms  |               |                      |
+| asyoulik.txt |   125 179B |     75 895B  |          39.37 % |      72 ms  |               |                      |
+| bible.txt    | 4 047 392B |  2 218 533B  |          45.19 % |     401 ms  |               |                      |
+| cp.html      |    24 603B |     16 311B  |          33.70 % |      38 ms  |               |                      |
 | fields.c     |    11 150B |              |                  |             |               |                      |
 | E.coli       | 4 638 690B |              |                  |             |               |                      |
 | grammar.lsp  |     3 721B |              |                  |             |               |                      |
