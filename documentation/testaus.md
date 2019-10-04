@@ -4,7 +4,7 @@
 
 ### Huffman
 
-Suorituskykytestaukseen on käytetty [The Cantebury Corpus](http://corpus.canterbury.ac.nz/descriptions/) ja joitakin muita suurempia tiedostoja, jotka löytyvät sivulta. Tiedot ajasta ja kuinka suuren määrän tilaa on säästänyt tulostuu jokaisen pakatun tiedoston jälkeen. 
+Suorituskykytestaukseen on käytetty [The Canterbury Corpus](http://corpus.canterbury.ac.nz/descriptions/) ja joitakin muita suurempia tiedostoja, jotka löytyvät sivulta. Tiedot ajasta ja kuinka suuren määrän tilaa on säästänyt tulostuu jokaisen pakatun tiedoston jälkeen. 
 Testit on suoritettu Lenovo T480 läppärillä, jossa on muistia 16 Gigatavua ja Intel i5-8250U CPU @ 1.6Ghz x 4.
 
 Jokaista tiedostoa kohden on suoritettu 5 testiä, joista laskettu keskiarvo ajalle.
@@ -28,3 +28,12 @@ Purkaustestit suoritetaan kun purkaus on saatu suoriutumaan muistissa.
 | world192.txt | 2 473 400B |  1 558 717B  |      36.98 % |     317 ms  |               |         |
 | xargs.1      |     4 227B |      2 714B  |      35.79 % |      20 ms  |               |         |
 
+Tilaa säästynyt keskimäärin 45.21 % ja keskimäärin algoritmi pakkaa siis 54.79 %.
+
+
+## Yksikkötestaus
+
+
+## Lähteet
+
+* [The Canterbury Corpus](https://corpus.canterbury.ac.nz/descriptions/)
