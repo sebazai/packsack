@@ -26,7 +26,7 @@ Mene kansioon /packsack-master/packsack/.
 Voit pakata tiedostoja suoraan komentolinjalta seuraavalla komennolla:
 
 ```
-mvn compile exec:java -Dexec.mainClass=packsack.huffman.Main -Dexec.args="[argumentit]"
+mvn compile exec:java -Dexec.mainClass=packsack.Main -Dexec.args='[argumentit]'
 ```
 
 #### JAR:in käyttö
