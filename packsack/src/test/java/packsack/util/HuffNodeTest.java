@@ -62,4 +62,10 @@ public class HuffNodeTest {
     public void getOccurrencesReturnsCorrectAmount() {
         assertEquals(10, nodeA.getOccurrence());
     }
+    
+    @Test
+    public void isLeafIfNoChildren() {
+        HuffNode node = new HuffNode('j', 11, null, null);
+        assertTrue(node.isLeaf());
+    }
 }
