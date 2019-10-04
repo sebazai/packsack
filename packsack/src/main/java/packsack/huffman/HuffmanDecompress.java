@@ -19,6 +19,7 @@ public class HuffmanDecompress {
     private String treeAsBinary;
     private String dataToDecode;
     private final ByteStringManipulator manipulator;
+    public HuffNode rootnode;
         
     public HuffmanDecompress() {
         treeAsBinary = "";
@@ -37,7 +38,7 @@ public class HuffmanDecompress {
         int fileSize = inputstream.readFileSize();
 
         treeAsBinary = manipulator.byteToString(inputstream.nextInt());
-        HuffNode rootnode = this.decodeTree(inputstream);
+        rootnode = this.decodeTree(inputstream);
         byte[] dataToWrite = new byte[fileSize];
         
         for (int i = 0; i < fileSize; i++) {
@@ -97,5 +98,9 @@ public class HuffmanDecompress {
         
         treeAsBinary = treeAsBinary.substring(1);
         return new HuffNode(0, decodeTree(stream), decodeTree(stream));   
+    }
+    
+    public HuffNode getRootNode() {
+        return this.rootnode;
     }
 }

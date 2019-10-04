@@ -5,7 +5,6 @@
  */
 package packsack.huffman;
 
-import packsack.huffman.HuffmanCompress;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -18,7 +17,7 @@ import org.junit.Test;
  *
  * @author sebserge
  */
-public class HuffmanTest {
+public class HuffmanCompressTest {
     String testfile = getClass().getClassLoader().getResource("hufftreetestfile").getPath();
     String testfileTwo = getClass().getClassLoader().getResource("abracadabratest.txt").getPath();
     HuffmanCompress huffman; 
@@ -87,7 +86,6 @@ public class HuffmanTest {
         boolean isTrue = true;
         for (int i = 0; i < dataShouldBe.length; i++) {
             if (dataShouldBe[i] != compressedBytesTwo[i+12]) {
-                
                 isTrue = false;
             }
         }
