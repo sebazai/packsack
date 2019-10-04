@@ -1,15 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package packsack.io;
+
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.nio.channels.FileChannel;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import packsack.util.ByteStringManipulator;
+
 /**
  *
  * @author sebserge
@@ -17,8 +14,7 @@ import packsack.util.ByteStringManipulator;
 public class FileOutput {
     FileOutputStream stream;
     ByteStringManipulator manipulator;
-    FileChannel fChan;
-    ByteBuffer buff;
+    
     /**
      * Output stream for file bytes.
      * @param path Path where to output
@@ -31,8 +27,6 @@ public class FileOutput {
         try {
             stream = new FileOutputStream(path);
             manipulator = new ByteStringManipulator();
-            fChan = stream.getChannel();
-            buff = ByteBuffer.allocateDirect(32 * 1024);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

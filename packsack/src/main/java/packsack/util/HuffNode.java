@@ -5,10 +5,10 @@ package packsack.util;
  * @author sebserge
  */
 public class HuffNode implements Comparable<HuffNode> {
-    private int occurrence;
+    private final int occurrence;
     private HuffNode leftChild, rightChild;
-    private Character character;
-    private Boolean isLeaf;
+    private final Character character;
+    private final Boolean isLeaf;
     
     /**
      * Constructor for Huffman tree node leaves.

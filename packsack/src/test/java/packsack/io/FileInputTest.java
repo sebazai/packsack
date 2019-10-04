@@ -6,7 +6,6 @@
 package packsack.io;
 
 import java.io.IOException;
-import packsack.io.FileInput;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;

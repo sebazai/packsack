@@ -5,8 +5,6 @@
  */
 package packsack.util;
 
-import packsack.util.HuffNode;
-import packsack.util.HuffTree;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
