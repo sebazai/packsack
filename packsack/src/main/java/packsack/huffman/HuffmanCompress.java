@@ -1,9 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package packsack.huffman;
+
 import packsack.io.FileInput;
 import packsack.io.FileOutput;
 import packsack.util.ByteStringManipulator;
@@ -11,23 +7,28 @@ import packsack.util.HuffNode;
 import packsack.util.HuffTree;
 
 /**
- * HuffmanCompress compress and decompress class
+ * HuffmanCompress compress class used for compressing files.
  * @author sebserge
  */
 public class HuffmanCompress {
+    
     private final HuffTree tree;
-    private String treeAsBinary;
-    private String dataToDecode;
     private final ByteStringManipulator manipulator;
+    
     public HuffmanCompress() {
         this.tree = new HuffTree();
-        this.treeAsBinary = "";
-        this.dataToDecode = "";
         this.manipulator = new ByteStringManipulator();
     }
     
     /**
      * HuffmanCompress compress
+     * 
+     * Reads all bytes for the input file, calculates the occurrence of bytes/chars to a table.
+     * Builds the Huffman tree out of the occurrences into a MinHeap.
+     * Create the encoding table for compressing the file.
+     * Convert the tree to a binary string, write the original file size to the first 4 bytes and after that the tree.
+     * Encode data and write it.
+     * 
      * @param filePath Path to file to compress
      * @return size of file to be compressed, for performance testing
      */
@@ -48,8 +49,8 @@ public class HuffmanCompress {
         String[] codeTable = new String[256];
         this.createEncodingTable(codeTable, rootnode, "");
         
-        String treeAsBinaryLocal = this.writeTree(rootnode, new StringBuilder());
-        byte[] treeAsBytes = this.convertTreeBinaryStringToBytes(treeAsBinaryLocal);
+        String treeAsBinary = this.writeTree(rootnode, new StringBuilder());
+        byte[] treeAsBytes = manipulator.convertTreeBinaryStringToBytes(treeAsBinary);
         
         FileInput inputStream = new FileInput(filePath);
         FileOutput outputStream = new FileOutput(filePath, false);
@@ -67,18 +68,21 @@ public class HuffmanCompress {
     }
     
     /**
-     * Calculates the occurrences of characters in the input file to be compressed
+     * Calculates the occurrences of characters/bytes in the input file
+     * 
      * @param occurrences Link to the occurrences array
-     * @param stream Input file stream
+     * @param fileBytes Input file bytes
      */
-    public void calculateOccurrencesOfCharacters(int[] occurrences, byte[] stream) {
-        for (int i = 0; i < stream.length; i++) {
-            occurrences[manipulator.toUnsignedInt(stream[i])]++;
+    public void calculateOccurrencesOfCharacters(int[] occurrences, byte[] fileBytes) {
+        for (int i = 0; i < fileBytes.length; i++) {
+            occurrences[manipulator.toUnsignedInt(fileBytes[i])]++;
         }
     }
     
     /**
-     * Create encoding table of tree recursively
+     * Create encoding table for each byte/char recursively starting at root of tree
+     * Once you reach a leaf, save the Character into String table and give it the code generated in the travelsal.
+     * 
      * @param table Encoding table for characters
      * @param node Node to traverse
      * @param code Binary string code for nodes created recursively
@@ -94,6 +98,7 @@ public class HuffmanCompress {
     
     /**
      * Write HuffTree recursively to binary string.
+     * 
      * @param node start at root node
      * @param builder
      * @return Binary of tree as String
@@ -114,34 +119,18 @@ public class HuffmanCompress {
     }
     
     /**
-     * Converts the treeAsBinary String to an array of bytes to write in the output stream.
-     * Makes sure the string is divisible with 8 and with substring(0, 8) cut the string to 8-bits/byte.
-     * @param treeAsBinary
-     * @return array of bytes
-     */
-    public byte[] convertTreeBinaryStringToBytes(String treeAsBinary) {
-        treeAsBinary = manipulator.padBinaryStringWithZerosAtEnd(treeAsBinary);
-
-        byte[] treeAsBytes = new byte[treeAsBinary.length() / 8];
-        
-        for (int i = 0; i < treeAsBytes.length; i++) {
-            treeAsBytes[i] = manipulator.stringToByte(treeAsBinary.substring(0, 8));
-            treeAsBinary = treeAsBinary.substring(8);
-        }
-        return treeAsBytes;
-    }
-    
-    /**
-     * Reads the original file to be compressed and writes the encoded data using the encoding table.
+     * Reads the original file to be compressed and writes the encoded data using the encoding table generated in createEncodingTable method.
      * 
      * @param fileBytes Original file data as array in memory
      * @param outputStream file output stream
      * @param encodingTable Encoding table generated from hufftree
      */
     public void writeEncodedData(byte[] fileBytes, FileOutput outputStream, String[] encodingTable) {
+        
         String encodedString = "";
         byte[] arrayToWrite = new byte[fileBytes.length];
         int whereToWrite = 0;
+        
         for (int i = 0; i < fileBytes.length; i++) {
             int unSigned = manipulator.toUnsignedInt(fileBytes[i]);
             if (encodingTable[unSigned] == null) {
@@ -165,6 +154,7 @@ public class HuffmanCompress {
         }
         
         byte[] finalArray = new byte[whereToWrite];
+        
         for (int i = 0; i < whereToWrite; i++) {
             finalArray[i] = arrayToWrite[i];
         }

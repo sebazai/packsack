@@ -9,6 +9,7 @@ import packsack.ui.TextUI;
 public class Main {
 
     /**
+     * Starts the UI
      * @param args the command line arguments
      */
     public static void main(String[] args) {

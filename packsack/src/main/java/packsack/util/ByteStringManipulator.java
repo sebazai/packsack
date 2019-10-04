@@ -66,4 +66,22 @@ public class ByteStringManipulator {
         bytes[3] = (byte) (size);
         return bytes;
     }
+    
+    /**
+     * Converts the treeAsBinary String to an array of bytes to write in the output stream.
+     * Makes sure the string is divisible with 8 and with substring(0, 8) cut the string to 8-bits/byte.
+     * @param treeAsBinary
+     * @return array of bytes
+     */
+    public byte[] convertTreeBinaryStringToBytes(String treeAsBinary) {
+        treeAsBinary = this.padBinaryStringWithZerosAtEnd(treeAsBinary);
+
+        byte[] treeAsBytes = new byte[treeAsBinary.length() / 8];
+        
+        for (int i = 0; i < treeAsBytes.length; i++) {
+            treeAsBytes[i] = this.stringToByte(treeAsBinary.substring(0, 8));
+            treeAsBinary = treeAsBinary.substring(8);
+        }
+        return treeAsBytes;
+    }
 }
