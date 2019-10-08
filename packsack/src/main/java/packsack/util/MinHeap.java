@@ -3,7 +3,7 @@ package packsack.util;
 /**
  *
  * @author sebserge
- * @param <HuffNode>
+ * @param <HuffNode> MinHeap for HuffNodes
  */
 public class MinHeap<HuffNode extends Comparable<HuffNode>> {
 

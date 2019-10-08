@@ -54,9 +54,9 @@ public class HuffmanDecompress {
     /**
      * Decode the compressed data recursively
      * Using the generated tree from the decompressed file
-     * @param node
-     * @param stream
-     * @return 
+     * @param node Node to traverse
+     * @param stream FileInput stream
+     * @return decoded byte
      */
     public byte decodeData(HuffNode node, FileInput stream) {
         if (node.getCharacter() != null) {
@@ -79,7 +79,7 @@ public class HuffmanDecompress {
     /**
      * Build the hufftree from compressed file header recursively
      * Reads the bytes from the compressed file to a string.
-     * @param stream
+     * @param stream FileInput stream
      * @return root node
      */
     public HuffNode decodeTree(FileInput stream) {

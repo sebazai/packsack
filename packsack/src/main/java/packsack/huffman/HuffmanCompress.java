@@ -100,7 +100,7 @@ public class HuffmanCompress {
      * Write HuffTree recursively to binary string.
      * 
      * @param node start at root node
-     * @param builder
+     * @param builder StringBuilder
      * @return Binary of tree as String
      */
     public String writeTree(HuffNode node, StringBuilder builder) {

@@ -34,7 +34,7 @@ public class FileOutput {
     
     /**
      * Write one byte.
-     * @param i 
+     * @param i byte to write
      */
     public void write(int i) {
         try {
@@ -46,7 +46,7 @@ public class FileOutput {
     
     /**
      * Write an array of bytes.
-     * @param byteArray 
+     * @param byteArray aray of bytes to write
      */
     public void writeArray(byte[] byteArray) {
         try {
