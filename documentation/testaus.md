@@ -43,9 +43,14 @@ Kuvassa vertaillaan joidenkin tiedostojen kokoa alkuperäisessä, huffmanilla pa
 
 <img src="https://raw.githubusercontent.com/sebazai/packsack/master/documentation/kuvat/isotvertaus.JPG" />
 
+Kuten näemme, niin pelkästään Huffmanin algoritmilla ei saavuteta läheskään samaa pakkauskokoa kuin esim GZip:llä, joka käyttää hyväkseen DEFLATE algoritmia, joka on kombinaatio Huffmanin ja LZ77 algoritmeista. 
+Ainoastaan yksi tiedosto pakkaantuu pienempään tilaan pelkästään Huffmanin algoritmilla.
+
 ## Yksikkötestaus
 
-Yksikkötestaukset on tehty käyttäen JUnittia. Yksikkötestauksen ulkopuolelle on jätetty UI sekä Main.java. Raportin saa itse ajettua komennolla: 
+Yksikkötestaukset on tehty käyttäen JUnittia. Yksikkötestauksella on pyritty kattamaan kaikki käytetyt funktiot ja joillekin funktiolle on tehty yksittäisi testejä.
+Yksikkötestauksen ulkopuolelle on jätetty UI sekä Main.java. Raportin saa itse ajettua komennolla: 
+
 ```
 mvn test
 mvn jacoco:report
@@ -60,3 +65,4 @@ Alla kuva tämän hetkisestä yksikkötestauskattavuudesta.
 ## Lähteet
 
 * [The Canterbury Corpus](http://corpus.canterbury.ac.nz/descriptions/)
+* [GZip](https://en.wikipedia.org/wiki/Gzip)

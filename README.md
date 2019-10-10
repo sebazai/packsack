@@ -51,3 +51,40 @@ java -jar packsack-1.0-SNAPSHOT.jar [argumentit]
 
 Missä -co pakkaa tiedoston käyttäen Huffmanin ja -de purkaa tiedoston joka on pakattu ja kirjoittaa sen ulos haluamaansa paikkaan. 
 
+#### Checkstyle
+
+Checkstyle:n tarkistaminen onnistuu komennolla:
+```
+mvn jxr:jxr checkstyle:checkstyle
+```
+Tiedosto sijaitsee kansiossa /target/site/checkstyle.html
+
+#### Testaus ja Jacoco
+
+Testit voi suorittaa komennolla
+```
+mvn test
+```
+
+Jacoco raportin saa tehtyä komennolla
+
+```
+mvn jacoco:report
+```
+
+Joka generoi uuden tiedoston /target/site/jacoco/index.html
+
+Suorituskykytestauksen saa tehtyä komennolla
+```
+mvn test -Dtest=\Performance*
+```
+
+#### Javadoc
+
+Javadoc:in saa generoitua seuraavalla komennolla:
+
+```
+mvn javadoc:javadoc
+```
+
+Javadociin on myös ympätty yWorksin UMLdoclet.
