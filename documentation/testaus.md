@@ -59,4 +59,4 @@ Alla kuva tämän hetkisestä yksikkötestauskattavuudesta.
 
 ## Lähteet
 
-* [The Canterbury Corpus](https://corpus.canterbury.ac.nz/descriptions/)
+* [The Canterbury Corpus](http://corpus.canterbury.ac.nz/descriptions/)
