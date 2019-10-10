@@ -1,18 +1,11 @@
 package packsack.huffman;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import packsack.ui.TextUI;
 
 /**
- * Setup for each test and run each file separetly, so there is nothing in the memory.
+ * Setup for each test and run each file separately.
+ * 
  * @author sebserge
  */
 public class Performance {
