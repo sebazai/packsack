@@ -37,14 +37,25 @@ Tilaa säästynyt keskimäärin 45.21 % ja keskimäärin algoritmi pakkaa siis 5
 
 #### Graafit
 
+Kuvassa vertaillaan joidenkin tiedostojen kokoa alkuperäisessä, huffmanilla pakattu ja ubuntun .tar.gz pakkauksella.
+
 <img src="https://raw.githubusercontent.com/sebazai/packsack/master/documentation/kuvat/vertaus.JPG" />
 
 <img src="https://raw.githubusercontent.com/sebazai/packsack/master/documentation/kuvat/isotvertaus.JPG" />
 
 ## Yksikkötestaus
 
+Yksikkötestaukset on tehty käyttäen JUnittia. Yksikkötestauksen ulkopuolelle on jätetty UI sekä Main.java. Raportin saa itse ajettua komennolla: 
+```
+mvn test
+mvn jacoco:report
+```
 
+Tiedosto löytyy kansiosta /target/site/jacoco/index.html
 
+Alla kuva tämän hetkisestä yksikkötestauskattavuudesta.
+
+<img src="https://raw.githubusercontent.com/sebazai/packsack/master/documentation/kuvat/jacoco.png" />
 
 ## Lähteet
 
