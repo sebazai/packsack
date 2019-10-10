@@ -35,7 +35,11 @@ Testit ovat suoritettu käyttäen .jar tiedostoa, eli luvut eivät ole ohjelman 
 
 Tilaa säästynyt keskimäärin 45.21 % ja keskimäärin algoritmi pakkaa siis 54.79 %.
 
-<img src=https://github.com/sebazai/packsack/blob/master/documentation/kuvat/vertaus.JPG?raw=true" />
+#### Graafit
+
+<img src="https://raw.githubusercontent.com/sebazai/packsack/master/documentation/kuvat/vertaus.JPG" />
+
+<img src="https://raw.githubusercontent.com/sebazai/packsack/master/documentation/kuvat/isotvertaus.JPG" />
 
 ## Yksikkötestaus
 
