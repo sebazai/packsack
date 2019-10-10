@@ -7,6 +7,12 @@
 Suorituskykytestaukseen on käytetty [The Canterbury Corpus](http://corpus.canterbury.ac.nz/descriptions/) ja joitakin muita suurempia tiedostoja, jotka löytyvät sivulta. Tiedot ajasta ja kuinka suuren määrän tilaa on säästänyt tulostuu jokaisen pakatun tiedoston jälkeen. 
 Testit on suoritettu Lenovo T480 läppärillä, jossa on muistia 16 Gigatavua ja Intel i5-8250U CPU @ 1.6Ghz x 4.
 
+Ohjelmassa voi ajaa ylläolevan suorituskykytestauksen omalla koneella komennolla:
+
+```
+mvn test -Dtest=\Performance*
+```
+
 Jokaista tiedostoa kohden on suoritettu 8 testiä, joista laskettu keskiarvo ajalle.
 Testit ovat suoritettu käyttäen .jar tiedostoa, eli luvut eivät ole ohjelman suorituskykytestauksista.
 
@@ -29,11 +35,6 @@ Testit ovat suoritettu käyttäen .jar tiedostoa, eli luvut eivät ole ohjelman 
 
 Tilaa säästynyt keskimäärin 45.21 % ja keskimäärin algoritmi pakkaa siis 54.79 %.
 
-Ohjelmassa voi ajaa ylläolevan suorituskykytestauksen omalla koneella komennolla:
-
-```
-mvn test -Dtest=\Performance*
-```
 
 ## Yksikkötestaus
 
