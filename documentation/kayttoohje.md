@@ -32,7 +32,7 @@ java -jar packsack-1.0-SNAPSHOT.jar [argumentit]
 
 Missä -co pakkaa tiedoston käyttäen Huffmanin ja -de purkaa tiedoston joka on pakattu ja kirjoittaa sen ulos haluamaansa paikkaan. 
 
-# Checkstyle
+## Checkstyle
 
 Checkstyle:n tarkistaminen onnistuu komennolla:
 ```
@@ -40,7 +40,7 @@ mvn jxr:jxr checkstyle:checkstyle
 ```
 Tiedosto sijaitsee kansiossa /target/site/checkstyle.html
 
-# Testaus ja Jacoco
+## Testaus ja Jacoco
 
 Testit voi suorittaa komennolla
 ```
@@ -60,7 +60,7 @@ Suorituskykytestauksen saa tehtyä komennolla
 mvn test -Dtest=\Performance*
 ```
 
-# Javadoc
+## Javadoc
 
 Javadoc:in saa generoitua seuraavalla komennolla:
 
