@@ -1,18 +1,15 @@
-# Viikko 4
+# Viikko 6
 
 Aikaa käytetty, n. 10h
 
 ### Mitä olen tehnyt tällä viikolla?
 
-Tehnyt lisää testejä ja refaktoroinut koodiani. 
-Tehnyt oman minimikeon ja testejä tälle. 
-Hitaus on selvitetty ja jostain syystä se johtuu tavujen kirjoittamisesta kerrallaan. Käsitellään tavut muistissa jatkossa.
-Suorituskykytestausta aloitettu.
+Dokumentaatiota, suorituskykytestausta, tarkistanut koodiani ja siistinyt sitä.
 
 ### Miten ohjelma on edistynyt?
 
-Ohjelma on valmis ja omat tietorakenteet on toteutettu.
+Ohjelma ei ole edistynyt, lukuunottamat jotain hienosäätöä ja testien tekemistä.
 
 ### Seuraavaksi
 
-Mahdollisten corner casejen testaaminen ja dokumentaation, kuten käyttöohjeen, toteutus- ja testausdokumentaatio.
+Tarkastella dokumentaatiota, koodia ja javadoccia. Koitan selvittää miten suorituskykytestauksessa saisi javan jotenkin "unohtamaan" oliot, koska tuntuu, että se joitakin tiedostoja pakkaa nopeammin kuin JAR:lla tai suoraan komentolinjasta ajatessa.
