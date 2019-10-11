@@ -5,7 +5,14 @@
 Ohjelma koostuu neljästä pakkauksesta juuren alla, jotka ovat [huffman](https://github.com/sebazai/packsack/tree/master/packsack/src/main/java/packsack/huffman), [io](https://github.com/sebazai/packsack/tree/master/packsack/src/main/java/packsack/io), [util](https://github.com/sebazai/packsack/tree/master/packsack/src/main/java/packsack/util) ja [ui](https://github.com/sebazai/packsack/tree/master/packsack/src/main/java/packsack/ui).
 Ohjelman main funktio on pakkauksen [packsack](https://github.com/sebazai/packsack/tree/master/packsack/master/src/main/java/packsack) juuressa.
 
-**Inset pakkauskuva**
+<div style="float: left">
+<h2>Pakkauskaavio</h2>
+<img src="https://raw.githubusercontent.com/sebazai/packsack/master/documentation/kuvat/pakkaus.png" style="float: left" />
+</div>
+<div style="float: left">
+<h2>Luokkakaavio</h2>
+<img src="https://raw.githubusercontent.com/sebazai/packsack/master/documentation/kuvat/luokka.png" style="float: left" />
+</div>
 
 ### Huffman
 
