@@ -6,12 +6,8 @@ Ohjelma koostuu neljästä pakkauksesta juuren alla, jotka ovat [huffman](https:
 Ohjelman main funktio on pakkauksen [packsack](https://github.com/sebazai/packsack/tree/master/packsack/master/src/main/java/packsack) juuressa.
 
 <div style="float: left">
-<h2>Pakkauskaavio</h2>
+<h3>Pakkauskaavio</h3>
 <img src="https://raw.githubusercontent.com/sebazai/packsack/master/documentation/kuvat/pakkaus.png" style="float: left" />
-</div>
-<div style="float: left">
-<h2>Luokkakaavio</h2>
-<img src="https://raw.githubusercontent.com/sebazai/packsack/master/documentation/kuvat/luokka.png" style="float: left" />
 </div>
 
 ### Huffman
@@ -31,6 +27,11 @@ Util:ssa on myös  apuluokka, jolla voidaan muuttaa merkkijonot tavuiksi ja tois
 ### ui
 
 [ui](https://github.com/sebazai/packsack/tree/master/packsack/src/main/java/packsack/ui):ssa on yksinkertainen tekstipohjainen käyttöliittymä.
+
+<div style="float: left">
+<h3>Luokkakaavio</h3>
+<img src="https://raw.githubusercontent.com/sebazai/packsack/master/documentation/kuvat/luokka.png" style="float: left" />
+</div>
   
 ## Aika- ja tilavaativukset
 
