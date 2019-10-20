@@ -18,3 +18,6 @@ Pakkausohjelma, joka toteutetaan Javalla käyttäen Huffmanin algoritmia. Tietor
 * [Viikko 5](https://github.com/sebazai/packsack/blob/master/documentation/viikko5.md)
 * [Viikko 6](https://github.com/sebazai/packsack/blob/master/documentation/viikko6.md)
 
+### Releaset
+
+* [V1.0](https://github.com/sebazai/packsack/releases/tag/v1.0)
