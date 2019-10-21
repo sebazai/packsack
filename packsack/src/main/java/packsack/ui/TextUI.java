@@ -5,6 +5,10 @@ import packsack.huffman.HuffmanCompress;
 import packsack.huffman.HuffmanDecompress;
 import packsack.io.FileInput;
 
+/**
+ * Text userinterface
+ * @author sebserge
+ */
 public class TextUI {
     
     private static final DecimalFormat DFORMAT = new DecimalFormat("#.##");

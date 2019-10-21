@@ -1,7 +1,7 @@
 package packsack.util;
 
 /**
- *
+ * Huffman tree.
  * @author sebserge
  */
 public class HuffTree {

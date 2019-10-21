@@ -1,7 +1,7 @@
 package packsack.util;
 
 /**
- *
+ * Minimum heap for HuffNodes
  * @author sebserge
  * @param <HuffNode> MinHeap for HuffNodes
  */

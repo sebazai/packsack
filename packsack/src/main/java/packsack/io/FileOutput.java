@@ -6,7 +6,7 @@ import java.io.IOException;
 import packsack.util.ByteStringManipulator;
 
 /**
- *
+ * Output stream for file bytes.
  * @author sebserge
  */
 public class FileOutput {
@@ -38,6 +38,7 @@ public class FileOutput {
         try {
             stream.write(i);
         } catch (IOException e) {
+            // uncomment for stacktrace, commented due to tests
 //            e.printStackTrace();
         }
     }
