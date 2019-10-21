@@ -2,9 +2,7 @@ package packsack.io;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.nio.channels.FileChannel;
 import java.io.IOException;
-import java.nio.ByteBuffer;
 import packsack.util.ByteStringManipulator;
 
 /**

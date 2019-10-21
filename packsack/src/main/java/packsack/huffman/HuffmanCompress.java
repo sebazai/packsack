@@ -145,6 +145,8 @@ public class HuffmanCompress {
                 whereToWrite++;
             }
         }
+        
+        // Pad the last byte with zeros
         if (encodedString.length() % 8 != 0) {
             for (int i = encodedString.length() % 8; i <= 8; i++) {
                 encodedString += "0";
