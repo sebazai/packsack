@@ -4,19 +4,20 @@ Pakkausohjelma, joka toteutetaan Javalla käyttäen Huffmanin algoritmia. Tietor
 
 ###  Dokumentaatio
 
-* [Käyttöohje](https://github.com/sebazai/packsack/blob/master/documentation/kayttoohje.md)
-* [Määrittelydokumentaatio](https://github.com/sebazai/packsack/blob/master/documentation/maarittelydokumentti.md)
-* [Toteutusdokumentaatio](https://github.com/sebazai/packsack/blob/master/documentation/toteutus.md)
-* [Testausdokumentaatio](https://github.com/sebazai/packsack/blob/master/documentation/testaus.md)
+* [Käyttöohje](https://github.com/sebazai/packsack/blob/master/docs/kayttoohje.md)
+* [Määrittelydokumentaatio](https://github.com/sebazai/packsack/blob/master/docs/maarittelydokumentti.md)
+* [Toteutusdokumentaatio](https://github.com/sebazai/packsack/blob/master/docs/toteutus.md)
+* [Testausdokumentaatio](https://github.com/sebazai/packsack/blob/master/docs/testaus.md)
+* [Javadoc](https://sebazai.github.io/packsack/javadoc/index.html)
 
 ### Viikkoraportit
 
-* [Viikko 1](https://github.com/sebazai/packsack/blob/master/documentation/viikko1.md)
-* [Viikko 2](https://github.com/sebazai/packsack/blob/master/documentation/viikko2.md)
-* [Viikko 3](https://github.com/sebazai/packsack/blob/master/documentation/viikko3.md)
-* [Viikko 4](https://github.com/sebazai/packsack/blob/master/documentation/viikko4.md)
-* [Viikko 5](https://github.com/sebazai/packsack/blob/master/documentation/viikko5.md)
-* [Viikko 6](https://github.com/sebazai/packsack/blob/master/documentation/viikko6.md)
+* [Viikko 1](https://github.com/sebazai/packsack/blob/master/docs/viikko1.md)
+* [Viikko 2](https://github.com/sebazai/packsack/blob/master/docs/viikko2.md)
+* [Viikko 3](https://github.com/sebazai/packsack/blob/master/docs/viikko3.md)
+* [Viikko 4](https://github.com/sebazai/packsack/blob/master/docs/viikko4.md)
+* [Viikko 5](https://github.com/sebazai/packsack/blob/master/docs/viikko5.md)
+* [Viikko 6](https://github.com/sebazai/packsack/blob/master/docs/viikko6.md)
 
 ### Releaset
 
