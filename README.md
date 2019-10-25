@@ -21,4 +21,5 @@ Pakkausohjelma, joka toteutetaan Javalla käyttäen Huffmanin algoritmia. Tietor
 
 ### Releaset
 
+* [Final](https://github.com/sebazai/packsack/releases/tag/finaali)
 * [V1.0](https://github.com/sebazai/packsack/releases/tag/v1.0)
