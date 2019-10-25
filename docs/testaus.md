@@ -39,9 +39,9 @@ Tilaa säästynyt keskimäärin 45.21 % ja keskimäärin algoritmi pakkaa siis 5
 
 Kuvassa vertaillaan joidenkin tiedostojen kokoa alkuperäisessä, huffmanilla pakattu ja ubuntun .tar.gz pakkauksella.
 
-<img src="https://raw.githubusercontent.com/sebazai/packsack/master/documentation/kuvat/vertaus.JPG" />
+<img src="https://raw.githubusercontent.com/sebazai/packsack/master/docs/kuvat/vertaus.JPG" />
 
-<img src="https://raw.githubusercontent.com/sebazai/packsack/master/documentation/kuvat/isotvertaus.JPG" />
+<img src="https://raw.githubusercontent.com/sebazai/packsack/master/docs/kuvat/isotvertaus.JPG" />
 
 Kuten näemme, niin pelkästään Huffmanin algoritmilla ei saavuteta läheskään samaa pakkauskokoa kuin esim GZip:llä, joka käyttää hyväkseen DEFLATE algoritmia, joka on kombinaatio Huffmanin ja LZ77 algoritmeista. 
 Ainoastaan yksi tiedosto pakkaantuu pienempään tilaan pelkästään Huffmanin algoritmilla.
@@ -60,7 +60,7 @@ Tiedosto löytyy kansiosta /target/site/jacoco/index.html
 
 Alla kuva tämän hetkisestä yksikkötestauskattavuudesta.
 
-<img src="https://raw.githubusercontent.com/sebazai/packsack/master/documentation/kuvat/jacoco.png" />
+<img src="https://raw.githubusercontent.com/sebazai/packsack/master/docs/kuvat/jacoco.png" />
 
 ## Lähteet
 

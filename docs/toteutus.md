@@ -7,7 +7,7 @@ Ohjelman main funktio on pakkauksen [packsack](https://github.com/sebazai/packsa
 
 <div style="float: left">
 <h3>Pakkauskaavio</h3>
-<img src="https://raw.githubusercontent.com/sebazai/packsack/master/documentation/kuvat/pakkaus.png" style="float: left" />
+<img src="https://raw.githubusercontent.com/sebazai/packsack/master/docs/kuvat/pakkaus.png" style="float: left" />
 </div>
 
 ### Huffman
@@ -30,7 +30,7 @@ Util:ssa on myös  apuluokka, jolla voidaan muuttaa merkkijonot tavuiksi ja tois
 
 <div style="float: left">
 <h3>Luokkakaavio</h3>
-<img src="https://raw.githubusercontent.com/sebazai/packsack/master/documentation/kuvat/luokka.png" style="float: left" />
+<img src="https://raw.githubusercontent.com/sebazai/packsack/master/docs/kuvat/luokka.png" style="float: left" />
 </div>
   
 ## Aika- ja tilavaativukset
